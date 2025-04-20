@@ -8,17 +8,17 @@ import { UpdateProductDto } from './dto/update-product.dto';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) { }
 
-  @Post()
+  @Post() // POST /api/v1/products
   create(@Body() createProductDto: CreateProductDto) {
     return this.productsService.create(createProductDto);
   }
 
-  @Get()
+  @Get() // GET /api/v1/products 
   findAll() {
     return this.productsService.findAll();
   }
 
-  @Get(':id')
+  @Get(':id') // GET /api/v1/products /:id
   findOne(@Param('id') id: string) {
     return this.productsService.findOne(+id);
   }

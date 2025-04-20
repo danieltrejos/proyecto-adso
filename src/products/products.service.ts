@@ -17,7 +17,6 @@ export class ProductsService {
   // POST /api/v1/products
   create(createProductDto: CreateProductDto) {
     try {
-
       return this.prismaService.product.create({
         data: createProductDto
       })
@@ -36,7 +35,7 @@ export class ProductsService {
 
   // GET /api/v1/products/:id
   async findOne(id: number) {
-    const productFound = await this.prismaService.product.findUnique({ where: { id } });
+    const productFound = await this.prismaService.product.findUnique({ where: { id: id } });
     // Validación de que el producto existe
     if (!productFound) {
       throw new NotFoundException(`Product with id ${id} not found`);

@@ -2,6 +2,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as morgan from 'morgan'
+import { CORS } from './constants';
+
 
 import { ConfigService } from '@nestjs/config';
 
@@ -29,6 +31,8 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService); // configService.get('PORT')
 
+  // CORS
+  app.enableCors(CORS);
   app.setGlobalPrefix('api/v1'); // Prefijo para todas las rutas de la API
 
   app.useGlobalPipes(new ValidationPipe({ // Validación de datos de entrada

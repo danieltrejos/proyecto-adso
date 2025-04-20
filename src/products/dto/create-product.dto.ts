@@ -5,16 +5,13 @@ import {
     IsNotEmpty,
     IsOptional,
     IsNumber,
-    IsPositive,
-    Min,
-
-
+    IsPositive
 } from 'class-validator';
+
 
 
 export class CreateProductDto {
 
-    @Min(2)
     @IsNotEmpty()
     @IsString()
     name: string;
@@ -22,14 +19,19 @@ export class CreateProductDto {
     @IsOptional()
     description?: string;
 
+    @IsOptional()
+    type?: string;
+
     @IsNotEmpty()
     @IsNumber()
     @IsPositive()
     price: number;
 
+    @IsNotEmpty()
     @IsNumber()
     stock: number;
 
+    @IsNotEmpty()
     @IsOptional()
     @IsString()
     image?: string;

@@ -897,6 +897,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     description: string | null
+    type: string | null
     price: number | null
     image: string | null
     stock: number | null
@@ -908,6 +909,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     description: string | null
+    type: string | null
     price: number | null
     image: string | null
     stock: number | null
@@ -919,6 +921,7 @@ export namespace Prisma {
     id: number
     name: number
     description: number
+    type: number
     price: number
     image: number
     stock: number
@@ -944,6 +947,7 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
+    type?: true
     price?: true
     image?: true
     stock?: true
@@ -955,6 +959,7 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
+    type?: true
     price?: true
     image?: true
     stock?: true
@@ -966,6 +971,7 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
+    type?: true
     price?: true
     image?: true
     stock?: true
@@ -1064,6 +1070,7 @@ export namespace Prisma {
     id: number
     name: string
     description: string | null
+    type: string | null
     price: number
     image: string | null
     stock: number
@@ -1094,6 +1101,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    type?: boolean
     price?: boolean
     image?: boolean
     stock?: boolean
@@ -1105,6 +1113,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    type?: boolean
     price?: boolean
     image?: boolean
     stock?: boolean
@@ -1116,6 +1125,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    type?: boolean
     price?: boolean
     image?: boolean
     stock?: boolean
@@ -1127,6 +1137,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    type?: boolean
     price?: boolean
     image?: boolean
     stock?: boolean
@@ -1134,7 +1145,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "price" | "image" | "stock" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "type" | "price" | "image" | "stock" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
 
   export type $ProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Product"
@@ -1143,6 +1154,7 @@ export namespace Prisma {
       id: number
       name: string
       description: string | null
+      type: string | null
       price: number
       image: string | null
       stock: number
@@ -1574,6 +1586,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Product", 'Int'>
     readonly name: FieldRef<"Product", 'String'>
     readonly description: FieldRef<"Product", 'String'>
+    readonly type: FieldRef<"Product", 'String'>
     readonly price: FieldRef<"Product", 'Float'>
     readonly image: FieldRef<"Product", 'String'>
     readonly stock: FieldRef<"Product", 'Int'>
@@ -1963,6 +1976,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     description: 'description',
+    type: 'type',
     price: 'price',
     image: 'image',
     stock: 'stock',
@@ -2068,6 +2082,7 @@ export namespace Prisma {
     id?: IntFilter<"Product"> | number
     name?: StringFilter<"Product"> | string
     description?: StringNullableFilter<"Product"> | string | null
+    type?: StringNullableFilter<"Product"> | string | null
     price?: FloatFilter<"Product"> | number
     image?: StringNullableFilter<"Product"> | string | null
     stock?: IntFilter<"Product"> | number
@@ -2079,6 +2094,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
     price?: SortOrder
     image?: SortOrderInput | SortOrder
     stock?: SortOrder
@@ -2093,6 +2109,7 @@ export namespace Prisma {
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
     description?: StringNullableFilter<"Product"> | string | null
+    type?: StringNullableFilter<"Product"> | string | null
     price?: FloatFilter<"Product"> | number
     image?: StringNullableFilter<"Product"> | string | null
     stock?: IntFilter<"Product"> | number
@@ -2104,6 +2121,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
     price?: SortOrder
     image?: SortOrderInput | SortOrder
     stock?: SortOrder
@@ -2123,6 +2141,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Product"> | number
     name?: StringWithAggregatesFilter<"Product"> | string
     description?: StringNullableWithAggregatesFilter<"Product"> | string | null
+    type?: StringNullableWithAggregatesFilter<"Product"> | string | null
     price?: FloatWithAggregatesFilter<"Product"> | number
     image?: StringNullableWithAggregatesFilter<"Product"> | string | null
     stock?: IntWithAggregatesFilter<"Product"> | number
@@ -2133,6 +2152,7 @@ export namespace Prisma {
   export type ProductCreateInput = {
     name: string
     description?: string | null
+    type?: string | null
     price: number
     image?: string | null
     stock: number
@@ -2144,6 +2164,7 @@ export namespace Prisma {
     id?: number
     name: string
     description?: string | null
+    type?: string | null
     price: number
     image?: string | null
     stock: number
@@ -2154,6 +2175,7 @@ export namespace Prisma {
   export type ProductUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     image?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: IntFieldUpdateOperationsInput | number
@@ -2165,6 +2187,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     image?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: IntFieldUpdateOperationsInput | number
@@ -2176,6 +2199,7 @@ export namespace Prisma {
     id?: number
     name: string
     description?: string | null
+    type?: string | null
     price: number
     image?: string | null
     stock: number
@@ -2186,6 +2210,7 @@ export namespace Prisma {
   export type ProductUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     image?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: IntFieldUpdateOperationsInput | number
@@ -2197,6 +2222,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     image?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: IntFieldUpdateOperationsInput | number
@@ -2276,6 +2302,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    type?: SortOrder
     price?: SortOrder
     image?: SortOrder
     stock?: SortOrder
@@ -2293,6 +2320,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    type?: SortOrder
     price?: SortOrder
     image?: SortOrder
     stock?: SortOrder
@@ -2304,6 +2332,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    type?: SortOrder
     price?: SortOrder
     image?: SortOrder
     stock?: SortOrder
