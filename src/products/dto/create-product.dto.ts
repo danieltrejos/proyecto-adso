@@ -31,7 +31,7 @@ export class CreateProductDto {
     @IsNumber()
     stock: number;
 
-    @IsNotEmpty()
+
     @IsOptional()
     @IsString()
     image?: string;
