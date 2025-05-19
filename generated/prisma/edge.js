@@ -131,7 +131,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\dat18\\OneDrive\\Desktop\\SENA\\NESTJS\\proyecto\\proyecto-adso\\generated\\prisma",
+      "value": "C:\\Users\\USUARIO\\Desktop\\ADSO FINAL\\backend\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -145,7 +145,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\dat18\\OneDrive\\Desktop\\SENA\\NESTJS\\proyecto\\proyecto-adso\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\USUARIO\\Desktop\\ADSO FINAL\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -159,11 +159,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://final-db_owner:npg_18IvmiUesEVh@ep-ancient-glitter-acba7q3n-pooler.sa-east-1.aws.neon.tech/final-db?sslmode=require"
+        "value": null
       }
     }
   },

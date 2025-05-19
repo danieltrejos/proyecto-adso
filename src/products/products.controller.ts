@@ -6,14 +6,14 @@ import { UpdateProductDto } from './dto/update-product.dto';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) { }
+  constructor(private readonly productsService: ProductsService) {}
 
   @Post() // POST /api/v1/products
   create(@Body() createProductDto: CreateProductDto) {
     return this.productsService.create(createProductDto);
   }
 
-  @Get() // GET /api/v1/products 
+  @Get() // GET /api/v1/products
   findAll() {
     return this.productsService.findAll();
   }
@@ -32,4 +32,10 @@ export class ProductsController {
   remove(@Param('id') id: string) {
     return this.productsService.remove(+id);
   }
+
+  /* //Restock product
+  @Patch(':id/restock')
+  async restockProduct(@Param('id') id: number, @Body('amount') amount: number) {
+    return this.productsService.restock(+id, amount);
+  } */
 }
