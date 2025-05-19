@@ -27,15 +27,14 @@ export class ProductsController {
   update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
     return this.productsService.update(+id, updateProductDto);
   }
-
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.productsService.remove(+id);
   }
 
-  /* //Restock product
+  //Restock product
   @Patch(':id/restock')
-  async restockProduct(@Param('id') id: number, @Body('amount') amount: number) {
+  async restockProduct(@Param('id') id: string, @Body('amount') amount: number) {
     return this.productsService.restock(+id, amount);
-  } */
+  }
 }
