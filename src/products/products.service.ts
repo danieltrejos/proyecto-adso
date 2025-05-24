@@ -50,7 +50,6 @@ export class ProductsService {
     }
     return productUpdate;
   }
-
   async remove(id: number) {
     const deletedProduct = await this.prismaService.product.delete({ where: { id } });
     // Validación de que el producto existe
@@ -60,8 +59,8 @@ export class ProductsService {
     return deletedProduct;
   }
 
-  /* //Añadido para reabastecer el stock de un producto
-  // POST /api/v1/products/:id/restock
+  //Añadido para reabastecer el stock de un producto
+  // PATCH /api/v1/products/:id/restock
   async restock(id: number, amount: number) {
     if (amount <= 0) {
       throw new BadRequestException('El valor de reabastecimiento debe ser mayor a cero.');
@@ -80,5 +79,5 @@ export class ProductsService {
         }
       }
     });
-  } */
+  }
 }
