@@ -9,6 +9,7 @@ import { CategoriasModule } from './categorias/categorias.module';
 import { ProductsModule } from './products/products.module';
 import { PrismaService } from './prisma/prisma.service';
 import { UsersModule } from './users/users.module';
+import { SalesModule } from './sales/sales.module';
 
 // Asegurar que el process.env.NODE_ENV se cargue aunque sea en desarrollo
 const envFilePath = `.${process.env.NODE_ENV || 'development'}.env`;
@@ -19,7 +20,7 @@ const envFilePath = `.${process.env.NODE_ENV || 'development'}.env`;
     ConfigModule.forRoot({
       envFilePath,
       isGlobal: true
-    }), ProductosModule, CategoriasModule, ProductsModule, UsersModule],
+    }), ProductosModule, CategoriasModule, ProductsModule, UsersModule, SalesModule],
   controllers: [AppController],
   providers: [AppService, PrismaService]
 })
