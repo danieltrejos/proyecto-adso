@@ -1,0 +1,19 @@
+meta {
+  name: Crear Venta
+  type: http
+  seq: 11
+}
+
+post {
+  url: http://localhost:8000/api/v1/customers
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "María García",
+    "email": "maria.garcia@email.com",
+    "phone": "555-987-6543"
+  }
+}
