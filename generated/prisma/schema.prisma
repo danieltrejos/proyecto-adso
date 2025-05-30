@@ -24,4 +24,73 @@ model Product {
   stock       Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  // Relaciones
+  saleItems SaleItem[]
+}
+
+//
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  role      String // "admin", "bartender", etc.
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relaciones
+  sales Sale[]
+
+  @@map("users")
+}
+
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String?
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relaciones
+  sales Sale[]
+
+  @@map("customers")
+}
+
+model Sale {
+  id            Int      @id @default(autoincrement())
+  total         Float
+  paymentAmount Float
+  change        Float
+  paymentMethod String   @default("Cash") // "Cash", "Credit Card", etc.
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Foreign Keys
+  userId     Int
+  customerId Int?
+
+  // Relaciones
+  user     User       @relation(fields: [userId], references: [id])
+  customer Customer?  @relation(fields: [customerId], references: [id])
+  items    SaleItem[]
+
+  @@map("sales")
+}
+
+model SaleItem {
+  id       Int   @id @default(autoincrement())
+  quantity Int
+  price    Float // Precio al momento de la venta
+
+  // Foreign Keys
+  saleId    Int
+  productId Int
+
+  // Relaciones
+  sale    Sale    @relation(fields: [saleId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+
+  @@map("sale_items")
 }
