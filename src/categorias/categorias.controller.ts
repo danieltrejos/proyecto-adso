@@ -2,12 +2,12 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { CategoriasService } from './categorias.service';
 import { CreateCategoriaDto } from './dto/create-categoria.dto';
 import { UpdateCategoriaDto } from './dto/update-categoria.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiExcludeController } from '@nestjs/swagger';
 
-@ApiTags('Categorias')
+@ApiExcludeController()
 @Controller('categorias')
 export class CategoriasController {
-  constructor(private readonly categoriasService: CategoriasService) { }
+  constructor(private readonly categoriasService: CategoriasService) {}
 
   @Post()
   create(@Body() createCategoriaDto: CreateCategoriaDto) {
