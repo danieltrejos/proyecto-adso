@@ -94,3 +94,26 @@ model SaleItem {
   
   @@map("sale_items")
 }
+
+model Company {
+  id              String   @id @default(cuid())
+  name            String
+  registrationNumber String @map("registration_number")
+  email           String   @unique
+  phone           String?
+  currency        String   @default("USD")
+  timezone        String   @default("America/Bogota")
+  logo            String?
+  
+  // Address fields
+  street          String
+  city            String
+  state           String   @map("region_province")
+  postalCode      String   @map("postal_code")
+  country         String
+  
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+  
+  @@map("companies")
+}
