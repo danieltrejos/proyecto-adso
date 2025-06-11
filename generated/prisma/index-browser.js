@@ -167,6 +167,24 @@ exports.Prisma.SaleItemScalarFieldEnum = {
   productId: 'productId'
 };
 
+exports.Prisma.CompanyScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  registrationNumber: 'registrationNumber',
+  email: 'email',
+  phone: 'phone',
+  currency: 'currency',
+  timezone: 'timezone',
+  logo: 'logo',
+  street: 'street',
+  city: 'city',
+  state: 'state',
+  postalCode: 'postalCode',
+  country: 'country',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -188,7 +206,8 @@ exports.Prisma.ModelName = {
   User: 'User',
   Customer: 'Customer',
   Sale: 'Sale',
-  SaleItem: 'SaleItem'
+  SaleItem: 'SaleItem',
+  Company: 'Company'
 };
 
 /**
