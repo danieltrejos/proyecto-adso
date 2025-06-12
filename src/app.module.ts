@@ -12,6 +12,8 @@ import { UsersModule } from './users/users.module';
 import { SalesModule } from './sales/sales.module';
 import { CustomersModule } from './customers/customers.module';
 import { CompaniesModule } from './companies/companies.module';
+import { TaxesModule } from './taxes/taxes.module';
+import { CurrenciesModule } from './currencies/currencies.module';
 
 // Asegurar que el process.env.NODE_ENV se cargue aunque sea en desarrollo
 const envFilePath = `.${process.env.NODE_ENV || 'development'}.env`;
@@ -28,7 +30,9 @@ const envFilePath = `.${process.env.NODE_ENV || 'development'}.env`;
     UsersModule,
     SalesModule,
     CustomersModule,
-    CompaniesModule
+    CompaniesModule,
+    TaxesModule,
+    CurrenciesModule
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService]
