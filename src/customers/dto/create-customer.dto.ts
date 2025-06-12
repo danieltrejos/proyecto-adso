@@ -16,4 +16,12 @@ export class CreateCustomerDto {
   @IsOptional()
   @IsString()
   phone?: string;
+
+  @ApiPropertyOptional({
+    description: 'Dirección del cliente',
+    example: 'Calle 123 #45-67, Barrio Centro'
+  })
+  @IsOptional()
+  @IsString()
+  address?: string;
 }
