@@ -5,7 +5,6 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config'; //!Configuracion para varibles de entorno
 
 import { ProductosModule } from './productos/productos.module';
-import { CategoriasModule } from './categorias/categorias.module';
 import { ProductsModule } from './products/products.module';
 import { PrismaService } from './prisma/prisma.service';
 import { UsersModule } from './users/users.module';
@@ -24,9 +23,7 @@ const envFilePath = `.${process.env.NODE_ENV || 'development'}.env`;
     ConfigModule.forRoot({
       envFilePath,
       isGlobal: true
-    }),
-    ProductosModule,
-    CategoriasModule,
+    }),    ProductosModule,
     ProductsModule,
     UsersModule,
     SalesModule,
