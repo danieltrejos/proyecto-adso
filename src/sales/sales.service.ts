@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { CreateSaleDto } from './dto/create-sale.dto';
 //import { UpdateSaleDto } from './dto/update-sale.dto';
@@ -10,7 +6,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class SalesService {
   constructor(private readonly prismaService: PrismaService) {}
-
   async create(createSaleDto: CreateSaleDto) {
     const { items, ...saleData } = createSaleDto;
 
@@ -30,12 +25,16 @@ export class SalesService {
         }
       }
 
+      // Generar número de factura único
+      const invoiceNumber = await this.generateInvoiceNumber();
+
       // Crear la venta con sus items y actualizar el stock
       const sale = await this.prismaService.$transaction(async (prisma) => {
         // Crear la venta
         const newSale = await prisma.sale.create({
           data: {
             ...saleData,
+            invoiceNumber, // NUEVO - Agregar número de factura
             items: {
               create: items.map((item) => ({
                 productId: item.productId,
@@ -51,7 +50,8 @@ export class SalesService {
               }
             },
             user: true,
-            customer: true
+            customer: true,
+            company: true // NUEVO - Incluir datos de la empresa
           }
         });
 
@@ -76,7 +76,6 @@ export class SalesService {
       throw error;
     }
   }
-
   async findAll() {
     return await this.prismaService.sale.findMany({
       include: {
@@ -86,12 +85,12 @@ export class SalesService {
           }
         },
         user: true,
-        customer: true
+        customer: true,
+        company: true // NUEVO - Incluir datos de la empresa
       },
       orderBy: { createdAt: 'desc' }
     });
   }
-
   async findOne(id: number) {
     const sale = await this.prismaService.sale.findUnique({
       where: { id },
@@ -102,7 +101,8 @@ export class SalesService {
           }
         },
         user: true,
-        customer: true
+        customer: true,
+        company: true // NUEVO - Incluir datos de la empresa
       }
     });
 
@@ -111,7 +111,6 @@ export class SalesService {
     }
     return sale;
   }
-
   async findByUser(userId: number) {
     return await this.prismaService.sale.findMany({
       where: { userId },
@@ -121,7 +120,8 @@ export class SalesService {
             product: true
           }
         },
-        customer: true
+        customer: true,
+        company: true // NUEVO - Incluir datos de la empresa
       },
       orderBy: { createdAt: 'desc' }
     });
@@ -142,7 +142,8 @@ export class SalesService {
           }
         },
         user: true,
-        customer: true
+        customer: true,
+        company: true // NUEVO - Incluir datos de la empresa
       },
       orderBy: { createdAt: 'desc' }
     });
@@ -202,5 +203,35 @@ export class SalesService {
       },
       topProducts
     };
+  }
+
+  // NUEVO - Generar número de factura único
+  private async generateInvoiceNumber(): Promise<string> {
+    const lastSale = await this.prismaService.sale.findFirst({
+      where: { invoiceNumber: { not: null } },
+      orderBy: { createdAt: 'desc' }
+    });
+
+    const nextNumber = lastSale ? parseInt(lastSale.invoiceNumber!.replace(/\D/g, '')) + 1 : 1;
+
+    return `FAC-${nextNumber.toString().padStart(5, '0')}`;
+  }
+
+  // NUEVO - Método para obtener venta con datos completos para facturación
+  async findOneForInvoice(id: number) {
+    const sale = await this.prismaService.sale.findUnique({
+      where: { id },
+      include: {
+        items: { include: { product: true } },
+        user: true,
+        customer: true,
+        company: true // Datos de la empresa para la factura
+      }
+    });
+
+    if (!sale) {
+      throw new NotFoundException(`Venta con ID ${id} no encontrada`);
+    }
+    return sale;
   }
 }

@@ -48,6 +48,31 @@ export class CreateSaleDto {
   total: number;
 
   @ApiProperty({
+    description: 'Subtotal sin impuestos',
+    example: 14.53,
+    minimum: 0.01
+  })
+  @IsNumber()
+  @IsPositive()
+  subtotal: number;
+
+  @ApiProperty({
+    description: 'Monto de impuestos calculado',
+    example: 1.45,
+    minimum: 0
+  })
+  @IsNumber()
+  taxAmount: number;
+
+  @ApiProperty({
+    description: 'Porcentaje de impuesto aplicado',
+    example: 10.0,
+    minimum: 0
+  })
+  @IsNumber()
+  taxRate: number;
+
+  @ApiProperty({
     description: 'Monto pagado por el cliente',
     example: 20.0,
     minimum: 0.01
@@ -89,6 +114,13 @@ export class CreateSaleDto {
   @IsOptional()
   @IsNumber()
   customerId?: number;
+
+  @ApiProperty({
+    description: 'ID de la empresa',
+    example: 'cmbsj3d7v0000um9c91vyzwez'
+  })
+  @IsString()
+  companyId: string;
 
   @ApiProperty({
     description: 'Lista de productos vendidos con sus cantidades y precios',

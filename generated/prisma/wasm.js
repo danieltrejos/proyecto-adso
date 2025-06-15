@@ -143,6 +143,7 @@ exports.Prisma.CustomerScalarFieldEnum = {
   name: 'name',
   email: 'email',
   phone: 'phone',
+  address: 'address',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -150,13 +151,18 @@ exports.Prisma.CustomerScalarFieldEnum = {
 exports.Prisma.SaleScalarFieldEnum = {
   id: 'id',
   total: 'total',
+  subtotal: 'subtotal',
+  taxAmount: 'taxAmount',
+  taxRate: 'taxRate',
   paymentAmount: 'paymentAmount',
   change: 'change',
   paymentMethod: 'paymentMethod',
+  invoiceNumber: 'invoiceNumber',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId',
-  customerId: 'customerId'
+  customerId: 'customerId',
+  companyId: 'companyId'
 };
 
 exports.Prisma.SaleItemScalarFieldEnum = {
@@ -185,6 +191,29 @@ exports.Prisma.CompanyScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CurrencyScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  symbol: 'symbol',
+  precision: 'precision',
+  thousandSeparator: 'thousandSeparator',
+  decimalSeparator: 'decimalSeparator',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TaxScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  rate: 'rate',
+  isActive: 'isActive',
+  isDefault: 'isDefault',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -207,7 +236,9 @@ exports.Prisma.ModelName = {
   Customer: 'Customer',
   Sale: 'Sale',
   SaleItem: 'SaleItem',
-  Company: 'Company'
+  Company: 'Company',
+  Currency: 'Currency',
+  Tax: 'Tax'
 };
 
 /**

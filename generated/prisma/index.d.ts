@@ -43,6 +43,16 @@ export type SaleItem = $Result.DefaultSelection<Prisma.$SaleItemPayload>
  * 
  */
 export type Company = $Result.DefaultSelection<Prisma.$CompanyPayload>
+/**
+ * Model Currency
+ * 
+ */
+export type Currency = $Result.DefaultSelection<Prisma.$CurrencyPayload>
+/**
+ * Model Tax
+ * 
+ */
+export type Tax = $Result.DefaultSelection<Prisma.$TaxPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -228,6 +238,26 @@ export class PrismaClient<
     * ```
     */
   get company(): Prisma.CompanyDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.currency`: Exposes CRUD operations for the **Currency** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Currencies
+    * const currencies = await prisma.currency.findMany()
+    * ```
+    */
+  get currency(): Prisma.CurrencyDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tax`: Exposes CRUD operations for the **Tax** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Taxes
+    * const taxes = await prisma.tax.findMany()
+    * ```
+    */
+  get tax(): Prisma.TaxDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -673,7 +703,9 @@ export namespace Prisma {
     Customer: 'Customer',
     Sale: 'Sale',
     SaleItem: 'SaleItem',
-    Company: 'Company'
+    Company: 'Company',
+    Currency: 'Currency',
+    Tax: 'Tax'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -692,7 +724,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "product" | "user" | "customer" | "sale" | "saleItem" | "company"
+      modelProps: "product" | "user" | "customer" | "sale" | "saleItem" | "company" | "currency" | "tax"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1140,6 +1172,154 @@ export namespace Prisma {
           }
         }
       }
+      Currency: {
+        payload: Prisma.$CurrencyPayload<ExtArgs>
+        fields: Prisma.CurrencyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CurrencyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CurrencyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          findFirst: {
+            args: Prisma.CurrencyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CurrencyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          findMany: {
+            args: Prisma.CurrencyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>[]
+          }
+          create: {
+            args: Prisma.CurrencyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          createMany: {
+            args: Prisma.CurrencyCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CurrencyCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>[]
+          }
+          delete: {
+            args: Prisma.CurrencyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          update: {
+            args: Prisma.CurrencyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          deleteMany: {
+            args: Prisma.CurrencyDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CurrencyUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CurrencyUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>[]
+          }
+          upsert: {
+            args: Prisma.CurrencyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          aggregate: {
+            args: Prisma.CurrencyAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCurrency>
+          }
+          groupBy: {
+            args: Prisma.CurrencyGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CurrencyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CurrencyCountArgs<ExtArgs>
+            result: $Utils.Optional<CurrencyCountAggregateOutputType> | number
+          }
+        }
+      }
+      Tax: {
+        payload: Prisma.$TaxPayload<ExtArgs>
+        fields: Prisma.TaxFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TaxFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaxPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TaxFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaxPayload>
+          }
+          findFirst: {
+            args: Prisma.TaxFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaxPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TaxFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaxPayload>
+          }
+          findMany: {
+            args: Prisma.TaxFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaxPayload>[]
+          }
+          create: {
+            args: Prisma.TaxCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaxPayload>
+          }
+          createMany: {
+            args: Prisma.TaxCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TaxCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaxPayload>[]
+          }
+          delete: {
+            args: Prisma.TaxDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaxPayload>
+          }
+          update: {
+            args: Prisma.TaxUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaxPayload>
+          }
+          deleteMany: {
+            args: Prisma.TaxDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TaxUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TaxUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaxPayload>[]
+          }
+          upsert: {
+            args: Prisma.TaxUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaxPayload>
+          }
+          aggregate: {
+            args: Prisma.TaxAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTax>
+          }
+          groupBy: {
+            args: Prisma.TaxGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TaxGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TaxCountArgs<ExtArgs>
+            result: $Utils.Optional<TaxCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1230,6 +1410,8 @@ export namespace Prisma {
     sale?: SaleOmit
     saleItem?: SaleItemOmit
     company?: CompanyOmit
+    currency?: CurrencyOmit
+    tax?: TaxOmit
   }
 
   /* Types for Logging */
@@ -1440,6 +1622,37 @@ export namespace Prisma {
    */
   export type SaleCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SaleItemWhereInput
+  }
+
+
+  /**
+   * Count Type CompanyCountOutputType
+   */
+
+  export type CompanyCountOutputType = {
+    sales: number
+  }
+
+  export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sales?: boolean | CompanyCountOutputTypeCountSalesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyCountOutputType
+     */
+    select?: CompanyCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountSalesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SaleWhereInput
   }
 
 
@@ -3753,6 +3966,7 @@ export namespace Prisma {
     name: string | null
     email: string | null
     phone: string | null
+    address: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3762,6 +3976,7 @@ export namespace Prisma {
     name: string | null
     email: string | null
     phone: string | null
+    address: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3771,6 +3986,7 @@ export namespace Prisma {
     name: number
     email: number
     phone: number
+    address: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3790,6 +4006,7 @@ export namespace Prisma {
     name?: true
     email?: true
     phone?: true
+    address?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3799,6 +4016,7 @@ export namespace Prisma {
     name?: true
     email?: true
     phone?: true
+    address?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3808,6 +4026,7 @@ export namespace Prisma {
     name?: true
     email?: true
     phone?: true
+    address?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3904,6 +4123,7 @@ export namespace Prisma {
     name: string
     email: string | null
     phone: string | null
+    address: string | null
     createdAt: Date
     updatedAt: Date
     _count: CustomerCountAggregateOutputType | null
@@ -3932,6 +4152,7 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     phone?: boolean
+    address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     sales?: boolean | Customer$salesArgs<ExtArgs>
@@ -3943,6 +4164,7 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     phone?: boolean
+    address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["customer"]>
@@ -3952,6 +4174,7 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     phone?: boolean
+    address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["customer"]>
@@ -3961,11 +4184,12 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     phone?: boolean
+    address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CustomerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "createdAt" | "updatedAt", ExtArgs["result"]["customer"]>
+  export type CustomerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "address" | "createdAt" | "updatedAt", ExtArgs["result"]["customer"]>
   export type CustomerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sales?: boolean | Customer$salesArgs<ExtArgs>
     _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
@@ -3983,6 +4207,7 @@ export namespace Prisma {
       name: string
       email: string | null
       phone: string | null
+      address: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["customer"]>
@@ -4413,6 +4638,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Customer", 'String'>
     readonly email: FieldRef<"Customer", 'String'>
     readonly phone: FieldRef<"Customer", 'String'>
+    readonly address: FieldRef<"Customer", 'String'>
     readonly createdAt: FieldRef<"Customer", 'DateTime'>
     readonly updatedAt: FieldRef<"Customer", 'DateTime'>
   }
@@ -4860,6 +5086,9 @@ export namespace Prisma {
   export type SaleAvgAggregateOutputType = {
     id: number | null
     total: number | null
+    subtotal: number | null
+    taxAmount: number | null
+    taxRate: number | null
     paymentAmount: number | null
     change: number | null
     userId: number | null
@@ -4869,6 +5098,9 @@ export namespace Prisma {
   export type SaleSumAggregateOutputType = {
     id: number | null
     total: number | null
+    subtotal: number | null
+    taxAmount: number | null
+    taxRate: number | null
     paymentAmount: number | null
     change: number | null
     userId: number | null
@@ -4878,37 +5110,52 @@ export namespace Prisma {
   export type SaleMinAggregateOutputType = {
     id: number | null
     total: number | null
+    subtotal: number | null
+    taxAmount: number | null
+    taxRate: number | null
     paymentAmount: number | null
     change: number | null
     paymentMethod: string | null
+    invoiceNumber: string | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: number | null
     customerId: number | null
+    companyId: string | null
   }
 
   export type SaleMaxAggregateOutputType = {
     id: number | null
     total: number | null
+    subtotal: number | null
+    taxAmount: number | null
+    taxRate: number | null
     paymentAmount: number | null
     change: number | null
     paymentMethod: string | null
+    invoiceNumber: string | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: number | null
     customerId: number | null
+    companyId: string | null
   }
 
   export type SaleCountAggregateOutputType = {
     id: number
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod: number
+    invoiceNumber: number
     createdAt: number
     updatedAt: number
     userId: number
     customerId: number
+    companyId: number
     _all: number
   }
 
@@ -4916,6 +5163,9 @@ export namespace Prisma {
   export type SaleAvgAggregateInputType = {
     id?: true
     total?: true
+    subtotal?: true
+    taxAmount?: true
+    taxRate?: true
     paymentAmount?: true
     change?: true
     userId?: true
@@ -4925,6 +5175,9 @@ export namespace Prisma {
   export type SaleSumAggregateInputType = {
     id?: true
     total?: true
+    subtotal?: true
+    taxAmount?: true
+    taxRate?: true
     paymentAmount?: true
     change?: true
     userId?: true
@@ -4934,37 +5187,52 @@ export namespace Prisma {
   export type SaleMinAggregateInputType = {
     id?: true
     total?: true
+    subtotal?: true
+    taxAmount?: true
+    taxRate?: true
     paymentAmount?: true
     change?: true
     paymentMethod?: true
+    invoiceNumber?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
     customerId?: true
+    companyId?: true
   }
 
   export type SaleMaxAggregateInputType = {
     id?: true
     total?: true
+    subtotal?: true
+    taxAmount?: true
+    taxRate?: true
     paymentAmount?: true
     change?: true
     paymentMethod?: true
+    invoiceNumber?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
     customerId?: true
+    companyId?: true
   }
 
   export type SaleCountAggregateInputType = {
     id?: true
     total?: true
+    subtotal?: true
+    taxAmount?: true
+    taxRate?: true
     paymentAmount?: true
     change?: true
     paymentMethod?: true
+    invoiceNumber?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
     customerId?: true
+    companyId?: true
     _all?: true
   }
 
@@ -5057,13 +5325,18 @@ export namespace Prisma {
   export type SaleGroupByOutputType = {
     id: number
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod: string
+    invoiceNumber: string | null
     createdAt: Date
     updatedAt: Date
     userId: number
     customerId: number | null
+    companyId: string
     _count: SaleCountAggregateOutputType | null
     _avg: SaleAvgAggregateOutputType | null
     _sum: SaleSumAggregateOutputType | null
@@ -5088,15 +5361,21 @@ export namespace Prisma {
   export type SaleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     total?: boolean
+    subtotal?: boolean
+    taxAmount?: boolean
+    taxRate?: boolean
     paymentAmount?: boolean
     change?: boolean
     paymentMethod?: boolean
+    invoiceNumber?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
     customerId?: boolean
+    companyId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     customer?: boolean | Sale$customerArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
     items?: boolean | Sale$itemsArgs<ExtArgs>
     _count?: boolean | SaleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["sale"]>
@@ -5104,57 +5383,77 @@ export namespace Prisma {
   export type SaleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     total?: boolean
+    subtotal?: boolean
+    taxAmount?: boolean
+    taxRate?: boolean
     paymentAmount?: boolean
     change?: boolean
     paymentMethod?: boolean
+    invoiceNumber?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
     customerId?: boolean
+    companyId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     customer?: boolean | Sale$customerArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["sale"]>
 
   export type SaleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     total?: boolean
+    subtotal?: boolean
+    taxAmount?: boolean
+    taxRate?: boolean
     paymentAmount?: boolean
     change?: boolean
     paymentMethod?: boolean
+    invoiceNumber?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
     customerId?: boolean
+    companyId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     customer?: boolean | Sale$customerArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["sale"]>
 
   export type SaleSelectScalar = {
     id?: boolean
     total?: boolean
+    subtotal?: boolean
+    taxAmount?: boolean
+    taxRate?: boolean
     paymentAmount?: boolean
     change?: boolean
     paymentMethod?: boolean
+    invoiceNumber?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
     customerId?: boolean
+    companyId?: boolean
   }
 
-  export type SaleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "total" | "paymentAmount" | "change" | "paymentMethod" | "createdAt" | "updatedAt" | "userId" | "customerId", ExtArgs["result"]["sale"]>
+  export type SaleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "total" | "subtotal" | "taxAmount" | "taxRate" | "paymentAmount" | "change" | "paymentMethod" | "invoiceNumber" | "createdAt" | "updatedAt" | "userId" | "customerId" | "companyId", ExtArgs["result"]["sale"]>
   export type SaleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     customer?: boolean | Sale$customerArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
     items?: boolean | Sale$itemsArgs<ExtArgs>
     _count?: boolean | SaleCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SaleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     customer?: boolean | Sale$customerArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
   }
   export type SaleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     customer?: boolean | Sale$customerArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
   }
 
   export type $SalePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5162,18 +5461,24 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       customer: Prisma.$CustomerPayload<ExtArgs> | null
+      company: Prisma.$CompanyPayload<ExtArgs>
       items: Prisma.$SaleItemPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       total: number
+      subtotal: number
+      taxAmount: number
+      taxRate: number
       paymentAmount: number
       change: number
       paymentMethod: string
+      invoiceNumber: string | null
       createdAt: Date
       updatedAt: Date
       userId: number
       customerId: number | null
+      companyId: string
     }, ExtArgs["result"]["sale"]>
     composites: {}
   }
@@ -5570,6 +5875,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     customer<T extends Sale$customerArgs<ExtArgs> = {}>(args?: Subset<T, Sale$customerArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     items<T extends Sale$itemsArgs<ExtArgs> = {}>(args?: Subset<T, Sale$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SaleItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5602,13 +5908,18 @@ export namespace Prisma {
   interface SaleFieldRefs {
     readonly id: FieldRef<"Sale", 'Int'>
     readonly total: FieldRef<"Sale", 'Float'>
+    readonly subtotal: FieldRef<"Sale", 'Float'>
+    readonly taxAmount: FieldRef<"Sale", 'Float'>
+    readonly taxRate: FieldRef<"Sale", 'Float'>
     readonly paymentAmount: FieldRef<"Sale", 'Float'>
     readonly change: FieldRef<"Sale", 'Float'>
     readonly paymentMethod: FieldRef<"Sale", 'String'>
+    readonly invoiceNumber: FieldRef<"Sale", 'String'>
     readonly createdAt: FieldRef<"Sale", 'DateTime'>
     readonly updatedAt: FieldRef<"Sale", 'DateTime'>
     readonly userId: FieldRef<"Sale", 'Int'>
     readonly customerId: FieldRef<"Sale", 'Int'>
+    readonly companyId: FieldRef<"Sale", 'String'>
   }
     
 
@@ -7426,6 +7737,8 @@ export namespace Prisma {
     country?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    sales?: boolean | Company$salesArgs<ExtArgs>
+    _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
 
   export type CompanySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7483,10 +7796,18 @@ export namespace Prisma {
   }
 
   export type CompanyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "registrationNumber" | "email" | "phone" | "currency" | "timezone" | "logo" | "street" | "city" | "state" | "postalCode" | "country" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
+  export type CompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sales?: boolean | Company$salesArgs<ExtArgs>
+    _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CompanyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CompanyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $CompanyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Company"
-    objects: {}
+    objects: {
+      sales: Prisma.$SalePayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -7897,6 +8218,7 @@ export namespace Prisma {
    */
   export interface Prisma__CompanyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    sales<T extends Company$salesArgs<ExtArgs> = {}>(args?: Subset<T, Company$salesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7958,6 +8280,10 @@ export namespace Prisma {
      */
     omit?: CompanyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
      * Filter, which Company to fetch.
      */
     where: CompanyWhereUniqueInput
@@ -7976,6 +8302,10 @@ export namespace Prisma {
      */
     omit?: CompanyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
      * Filter, which Company to fetch.
      */
     where: CompanyWhereUniqueInput
@@ -7993,6 +8323,10 @@ export namespace Prisma {
      * Omit specific fields from the Company
      */
     omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
     /**
      * Filter, which Company to fetch.
      */
@@ -8042,6 +8376,10 @@ export namespace Prisma {
      */
     omit?: CompanyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
      * Filter, which Company to fetch.
      */
     where?: CompanyWhereInput
@@ -8090,6 +8428,10 @@ export namespace Prisma {
      */
     omit?: CompanyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
      * Filter, which Companies to fetch.
      */
     where?: CompanyWhereInput
@@ -8132,6 +8474,10 @@ export namespace Prisma {
      * Omit specific fields from the Company
      */
     omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
     /**
      * The data needed to create a Company.
      */
@@ -8180,6 +8526,10 @@ export namespace Prisma {
      * Omit specific fields from the Company
      */
     omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
     /**
      * The data needed to update a Company.
      */
@@ -8247,6 +8597,10 @@ export namespace Prisma {
      */
     omit?: CompanyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
      * The filter to search for the Company to update in case it exists.
      */
     where: CompanyWhereUniqueInput
@@ -8273,6 +8627,10 @@ export namespace Prisma {
      */
     omit?: CompanyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
      * Filter which Company to delete.
      */
     where: CompanyWhereUniqueInput
@@ -8293,6 +8651,30 @@ export namespace Prisma {
   }
 
   /**
+   * Company.sales
+   */
+  export type Company$salesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sale
+     */
+    select?: SaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Sale
+     */
+    omit?: SaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SaleInclude<ExtArgs> | null
+    where?: SaleWhereInput
+    orderBy?: SaleOrderByWithRelationInput | SaleOrderByWithRelationInput[]
+    cursor?: SaleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SaleScalarFieldEnum | SaleScalarFieldEnum[]
+  }
+
+  /**
    * Company without action
    */
   export type CompanyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8304,6 +8686,2167 @@ export namespace Prisma {
      * Omit specific fields from the Company
      */
     omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Currency
+   */
+
+  export type AggregateCurrency = {
+    _count: CurrencyCountAggregateOutputType | null
+    _avg: CurrencyAvgAggregateOutputType | null
+    _sum: CurrencySumAggregateOutputType | null
+    _min: CurrencyMinAggregateOutputType | null
+    _max: CurrencyMaxAggregateOutputType | null
+  }
+
+  export type CurrencyAvgAggregateOutputType = {
+    id: number | null
+    precision: number | null
+  }
+
+  export type CurrencySumAggregateOutputType = {
+    id: number | null
+    precision: number | null
+  }
+
+  export type CurrencyMinAggregateOutputType = {
+    id: number | null
+    code: string | null
+    name: string | null
+    symbol: string | null
+    precision: number | null
+    thousandSeparator: string | null
+    decimalSeparator: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CurrencyMaxAggregateOutputType = {
+    id: number | null
+    code: string | null
+    name: string | null
+    symbol: string | null
+    precision: number | null
+    thousandSeparator: string | null
+    decimalSeparator: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CurrencyCountAggregateOutputType = {
+    id: number
+    code: number
+    name: number
+    symbol: number
+    precision: number
+    thousandSeparator: number
+    decimalSeparator: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CurrencyAvgAggregateInputType = {
+    id?: true
+    precision?: true
+  }
+
+  export type CurrencySumAggregateInputType = {
+    id?: true
+    precision?: true
+  }
+
+  export type CurrencyMinAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    symbol?: true
+    precision?: true
+    thousandSeparator?: true
+    decimalSeparator?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CurrencyMaxAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    symbol?: true
+    precision?: true
+    thousandSeparator?: true
+    decimalSeparator?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CurrencyCountAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    symbol?: true
+    precision?: true
+    thousandSeparator?: true
+    decimalSeparator?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CurrencyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Currency to aggregate.
+     */
+    where?: CurrencyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Currencies to fetch.
+     */
+    orderBy?: CurrencyOrderByWithRelationInput | CurrencyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CurrencyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Currencies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Currencies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Currencies
+    **/
+    _count?: true | CurrencyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CurrencyAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CurrencySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CurrencyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CurrencyMaxAggregateInputType
+  }
+
+  export type GetCurrencyAggregateType<T extends CurrencyAggregateArgs> = {
+        [P in keyof T & keyof AggregateCurrency]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCurrency[P]>
+      : GetScalarType<T[P], AggregateCurrency[P]>
+  }
+
+
+
+
+  export type CurrencyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CurrencyWhereInput
+    orderBy?: CurrencyOrderByWithAggregationInput | CurrencyOrderByWithAggregationInput[]
+    by: CurrencyScalarFieldEnum[] | CurrencyScalarFieldEnum
+    having?: CurrencyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CurrencyCountAggregateInputType | true
+    _avg?: CurrencyAvgAggregateInputType
+    _sum?: CurrencySumAggregateInputType
+    _min?: CurrencyMinAggregateInputType
+    _max?: CurrencyMaxAggregateInputType
+  }
+
+  export type CurrencyGroupByOutputType = {
+    id: number
+    code: string
+    name: string
+    symbol: string
+    precision: number
+    thousandSeparator: string
+    decimalSeparator: string
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: CurrencyCountAggregateOutputType | null
+    _avg: CurrencyAvgAggregateOutputType | null
+    _sum: CurrencySumAggregateOutputType | null
+    _min: CurrencyMinAggregateOutputType | null
+    _max: CurrencyMaxAggregateOutputType | null
+  }
+
+  type GetCurrencyGroupByPayload<T extends CurrencyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CurrencyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CurrencyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CurrencyGroupByOutputType[P]>
+            : GetScalarType<T[P], CurrencyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CurrencySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    symbol?: boolean
+    precision?: boolean
+    thousandSeparator?: boolean
+    decimalSeparator?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["currency"]>
+
+  export type CurrencySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    symbol?: boolean
+    precision?: boolean
+    thousandSeparator?: boolean
+    decimalSeparator?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["currency"]>
+
+  export type CurrencySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    symbol?: boolean
+    precision?: boolean
+    thousandSeparator?: boolean
+    decimalSeparator?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["currency"]>
+
+  export type CurrencySelectScalar = {
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    symbol?: boolean
+    precision?: boolean
+    thousandSeparator?: boolean
+    decimalSeparator?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CurrencyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "name" | "symbol" | "precision" | "thousandSeparator" | "decimalSeparator" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["currency"]>
+
+  export type $CurrencyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Currency"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      code: string
+      name: string
+      symbol: string
+      precision: number
+      thousandSeparator: string
+      decimalSeparator: string
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["currency"]>
+    composites: {}
+  }
+
+  type CurrencyGetPayload<S extends boolean | null | undefined | CurrencyDefaultArgs> = $Result.GetResult<Prisma.$CurrencyPayload, S>
+
+  type CurrencyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CurrencyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CurrencyCountAggregateInputType | true
+    }
+
+  export interface CurrencyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Currency'], meta: { name: 'Currency' } }
+    /**
+     * Find zero or one Currency that matches the filter.
+     * @param {CurrencyFindUniqueArgs} args - Arguments to find a Currency
+     * @example
+     * // Get one Currency
+     * const currency = await prisma.currency.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CurrencyFindUniqueArgs>(args: SelectSubset<T, CurrencyFindUniqueArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Currency that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CurrencyFindUniqueOrThrowArgs} args - Arguments to find a Currency
+     * @example
+     * // Get one Currency
+     * const currency = await prisma.currency.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CurrencyFindUniqueOrThrowArgs>(args: SelectSubset<T, CurrencyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Currency that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyFindFirstArgs} args - Arguments to find a Currency
+     * @example
+     * // Get one Currency
+     * const currency = await prisma.currency.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CurrencyFindFirstArgs>(args?: SelectSubset<T, CurrencyFindFirstArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Currency that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyFindFirstOrThrowArgs} args - Arguments to find a Currency
+     * @example
+     * // Get one Currency
+     * const currency = await prisma.currency.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CurrencyFindFirstOrThrowArgs>(args?: SelectSubset<T, CurrencyFindFirstOrThrowArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Currencies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Currencies
+     * const currencies = await prisma.currency.findMany()
+     * 
+     * // Get first 10 Currencies
+     * const currencies = await prisma.currency.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const currencyWithIdOnly = await prisma.currency.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CurrencyFindManyArgs>(args?: SelectSubset<T, CurrencyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Currency.
+     * @param {CurrencyCreateArgs} args - Arguments to create a Currency.
+     * @example
+     * // Create one Currency
+     * const Currency = await prisma.currency.create({
+     *   data: {
+     *     // ... data to create a Currency
+     *   }
+     * })
+     * 
+     */
+    create<T extends CurrencyCreateArgs>(args: SelectSubset<T, CurrencyCreateArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Currencies.
+     * @param {CurrencyCreateManyArgs} args - Arguments to create many Currencies.
+     * @example
+     * // Create many Currencies
+     * const currency = await prisma.currency.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CurrencyCreateManyArgs>(args?: SelectSubset<T, CurrencyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Currencies and returns the data saved in the database.
+     * @param {CurrencyCreateManyAndReturnArgs} args - Arguments to create many Currencies.
+     * @example
+     * // Create many Currencies
+     * const currency = await prisma.currency.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Currencies and only return the `id`
+     * const currencyWithIdOnly = await prisma.currency.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CurrencyCreateManyAndReturnArgs>(args?: SelectSubset<T, CurrencyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Currency.
+     * @param {CurrencyDeleteArgs} args - Arguments to delete one Currency.
+     * @example
+     * // Delete one Currency
+     * const Currency = await prisma.currency.delete({
+     *   where: {
+     *     // ... filter to delete one Currency
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CurrencyDeleteArgs>(args: SelectSubset<T, CurrencyDeleteArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Currency.
+     * @param {CurrencyUpdateArgs} args - Arguments to update one Currency.
+     * @example
+     * // Update one Currency
+     * const currency = await prisma.currency.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CurrencyUpdateArgs>(args: SelectSubset<T, CurrencyUpdateArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Currencies.
+     * @param {CurrencyDeleteManyArgs} args - Arguments to filter Currencies to delete.
+     * @example
+     * // Delete a few Currencies
+     * const { count } = await prisma.currency.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CurrencyDeleteManyArgs>(args?: SelectSubset<T, CurrencyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Currencies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Currencies
+     * const currency = await prisma.currency.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CurrencyUpdateManyArgs>(args: SelectSubset<T, CurrencyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Currencies and returns the data updated in the database.
+     * @param {CurrencyUpdateManyAndReturnArgs} args - Arguments to update many Currencies.
+     * @example
+     * // Update many Currencies
+     * const currency = await prisma.currency.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Currencies and only return the `id`
+     * const currencyWithIdOnly = await prisma.currency.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CurrencyUpdateManyAndReturnArgs>(args: SelectSubset<T, CurrencyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Currency.
+     * @param {CurrencyUpsertArgs} args - Arguments to update or create a Currency.
+     * @example
+     * // Update or create a Currency
+     * const currency = await prisma.currency.upsert({
+     *   create: {
+     *     // ... data to create a Currency
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Currency we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CurrencyUpsertArgs>(args: SelectSubset<T, CurrencyUpsertArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Currencies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyCountArgs} args - Arguments to filter Currencies to count.
+     * @example
+     * // Count the number of Currencies
+     * const count = await prisma.currency.count({
+     *   where: {
+     *     // ... the filter for the Currencies we want to count
+     *   }
+     * })
+    **/
+    count<T extends CurrencyCountArgs>(
+      args?: Subset<T, CurrencyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CurrencyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Currency.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CurrencyAggregateArgs>(args: Subset<T, CurrencyAggregateArgs>): Prisma.PrismaPromise<GetCurrencyAggregateType<T>>
+
+    /**
+     * Group by Currency.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CurrencyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CurrencyGroupByArgs['orderBy'] }
+        : { orderBy?: CurrencyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CurrencyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCurrencyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Currency model
+   */
+  readonly fields: CurrencyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Currency.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CurrencyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Currency model
+   */
+  interface CurrencyFieldRefs {
+    readonly id: FieldRef<"Currency", 'Int'>
+    readonly code: FieldRef<"Currency", 'String'>
+    readonly name: FieldRef<"Currency", 'String'>
+    readonly symbol: FieldRef<"Currency", 'String'>
+    readonly precision: FieldRef<"Currency", 'Int'>
+    readonly thousandSeparator: FieldRef<"Currency", 'String'>
+    readonly decimalSeparator: FieldRef<"Currency", 'String'>
+    readonly isActive: FieldRef<"Currency", 'Boolean'>
+    readonly createdAt: FieldRef<"Currency", 'DateTime'>
+    readonly updatedAt: FieldRef<"Currency", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Currency findUnique
+   */
+  export type CurrencyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Filter, which Currency to fetch.
+     */
+    where: CurrencyWhereUniqueInput
+  }
+
+  /**
+   * Currency findUniqueOrThrow
+   */
+  export type CurrencyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Filter, which Currency to fetch.
+     */
+    where: CurrencyWhereUniqueInput
+  }
+
+  /**
+   * Currency findFirst
+   */
+  export type CurrencyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Filter, which Currency to fetch.
+     */
+    where?: CurrencyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Currencies to fetch.
+     */
+    orderBy?: CurrencyOrderByWithRelationInput | CurrencyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Currencies.
+     */
+    cursor?: CurrencyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Currencies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Currencies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Currencies.
+     */
+    distinct?: CurrencyScalarFieldEnum | CurrencyScalarFieldEnum[]
+  }
+
+  /**
+   * Currency findFirstOrThrow
+   */
+  export type CurrencyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Filter, which Currency to fetch.
+     */
+    where?: CurrencyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Currencies to fetch.
+     */
+    orderBy?: CurrencyOrderByWithRelationInput | CurrencyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Currencies.
+     */
+    cursor?: CurrencyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Currencies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Currencies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Currencies.
+     */
+    distinct?: CurrencyScalarFieldEnum | CurrencyScalarFieldEnum[]
+  }
+
+  /**
+   * Currency findMany
+   */
+  export type CurrencyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Filter, which Currencies to fetch.
+     */
+    where?: CurrencyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Currencies to fetch.
+     */
+    orderBy?: CurrencyOrderByWithRelationInput | CurrencyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Currencies.
+     */
+    cursor?: CurrencyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Currencies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Currencies.
+     */
+    skip?: number
+    distinct?: CurrencyScalarFieldEnum | CurrencyScalarFieldEnum[]
+  }
+
+  /**
+   * Currency create
+   */
+  export type CurrencyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Currency.
+     */
+    data: XOR<CurrencyCreateInput, CurrencyUncheckedCreateInput>
+  }
+
+  /**
+   * Currency createMany
+   */
+  export type CurrencyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Currencies.
+     */
+    data: CurrencyCreateManyInput | CurrencyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Currency createManyAndReturn
+   */
+  export type CurrencyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * The data used to create many Currencies.
+     */
+    data: CurrencyCreateManyInput | CurrencyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Currency update
+   */
+  export type CurrencyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Currency.
+     */
+    data: XOR<CurrencyUpdateInput, CurrencyUncheckedUpdateInput>
+    /**
+     * Choose, which Currency to update.
+     */
+    where: CurrencyWhereUniqueInput
+  }
+
+  /**
+   * Currency updateMany
+   */
+  export type CurrencyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Currencies.
+     */
+    data: XOR<CurrencyUpdateManyMutationInput, CurrencyUncheckedUpdateManyInput>
+    /**
+     * Filter which Currencies to update
+     */
+    where?: CurrencyWhereInput
+    /**
+     * Limit how many Currencies to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Currency updateManyAndReturn
+   */
+  export type CurrencyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * The data used to update Currencies.
+     */
+    data: XOR<CurrencyUpdateManyMutationInput, CurrencyUncheckedUpdateManyInput>
+    /**
+     * Filter which Currencies to update
+     */
+    where?: CurrencyWhereInput
+    /**
+     * Limit how many Currencies to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Currency upsert
+   */
+  export type CurrencyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Currency to update in case it exists.
+     */
+    where: CurrencyWhereUniqueInput
+    /**
+     * In case the Currency found by the `where` argument doesn't exist, create a new Currency with this data.
+     */
+    create: XOR<CurrencyCreateInput, CurrencyUncheckedCreateInput>
+    /**
+     * In case the Currency was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CurrencyUpdateInput, CurrencyUncheckedUpdateInput>
+  }
+
+  /**
+   * Currency delete
+   */
+  export type CurrencyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Filter which Currency to delete.
+     */
+    where: CurrencyWhereUniqueInput
+  }
+
+  /**
+   * Currency deleteMany
+   */
+  export type CurrencyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Currencies to delete
+     */
+    where?: CurrencyWhereInput
+    /**
+     * Limit how many Currencies to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Currency without action
+   */
+  export type CurrencyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Tax
+   */
+
+  export type AggregateTax = {
+    _count: TaxCountAggregateOutputType | null
+    _avg: TaxAvgAggregateOutputType | null
+    _sum: TaxSumAggregateOutputType | null
+    _min: TaxMinAggregateOutputType | null
+    _max: TaxMaxAggregateOutputType | null
+  }
+
+  export type TaxAvgAggregateOutputType = {
+    id: number | null
+    rate: number | null
+  }
+
+  export type TaxSumAggregateOutputType = {
+    id: number | null
+    rate: number | null
+  }
+
+  export type TaxMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    rate: number | null
+    isActive: boolean | null
+    isDefault: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TaxMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    rate: number | null
+    isActive: boolean | null
+    isDefault: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TaxCountAggregateOutputType = {
+    id: number
+    name: number
+    rate: number
+    isActive: number
+    isDefault: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TaxAvgAggregateInputType = {
+    id?: true
+    rate?: true
+  }
+
+  export type TaxSumAggregateInputType = {
+    id?: true
+    rate?: true
+  }
+
+  export type TaxMinAggregateInputType = {
+    id?: true
+    name?: true
+    rate?: true
+    isActive?: true
+    isDefault?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TaxMaxAggregateInputType = {
+    id?: true
+    name?: true
+    rate?: true
+    isActive?: true
+    isDefault?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TaxCountAggregateInputType = {
+    id?: true
+    name?: true
+    rate?: true
+    isActive?: true
+    isDefault?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TaxAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Tax to aggregate.
+     */
+    where?: TaxWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Taxes to fetch.
+     */
+    orderBy?: TaxOrderByWithRelationInput | TaxOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TaxWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Taxes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Taxes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Taxes
+    **/
+    _count?: true | TaxCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TaxAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TaxSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TaxMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TaxMaxAggregateInputType
+  }
+
+  export type GetTaxAggregateType<T extends TaxAggregateArgs> = {
+        [P in keyof T & keyof AggregateTax]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTax[P]>
+      : GetScalarType<T[P], AggregateTax[P]>
+  }
+
+
+
+
+  export type TaxGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TaxWhereInput
+    orderBy?: TaxOrderByWithAggregationInput | TaxOrderByWithAggregationInput[]
+    by: TaxScalarFieldEnum[] | TaxScalarFieldEnum
+    having?: TaxScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TaxCountAggregateInputType | true
+    _avg?: TaxAvgAggregateInputType
+    _sum?: TaxSumAggregateInputType
+    _min?: TaxMinAggregateInputType
+    _max?: TaxMaxAggregateInputType
+  }
+
+  export type TaxGroupByOutputType = {
+    id: number
+    name: string
+    rate: number
+    isActive: boolean
+    isDefault: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: TaxCountAggregateOutputType | null
+    _avg: TaxAvgAggregateOutputType | null
+    _sum: TaxSumAggregateOutputType | null
+    _min: TaxMinAggregateOutputType | null
+    _max: TaxMaxAggregateOutputType | null
+  }
+
+  type GetTaxGroupByPayload<T extends TaxGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TaxGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TaxGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TaxGroupByOutputType[P]>
+            : GetScalarType<T[P], TaxGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TaxSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    rate?: boolean
+    isActive?: boolean
+    isDefault?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["tax"]>
+
+  export type TaxSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    rate?: boolean
+    isActive?: boolean
+    isDefault?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["tax"]>
+
+  export type TaxSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    rate?: boolean
+    isActive?: boolean
+    isDefault?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["tax"]>
+
+  export type TaxSelectScalar = {
+    id?: boolean
+    name?: boolean
+    rate?: boolean
+    isActive?: boolean
+    isDefault?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TaxOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "rate" | "isActive" | "isDefault" | "createdAt" | "updatedAt", ExtArgs["result"]["tax"]>
+
+  export type $TaxPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Tax"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      rate: number
+      isActive: boolean
+      isDefault: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["tax"]>
+    composites: {}
+  }
+
+  type TaxGetPayload<S extends boolean | null | undefined | TaxDefaultArgs> = $Result.GetResult<Prisma.$TaxPayload, S>
+
+  type TaxCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TaxFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TaxCountAggregateInputType | true
+    }
+
+  export interface TaxDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Tax'], meta: { name: 'Tax' } }
+    /**
+     * Find zero or one Tax that matches the filter.
+     * @param {TaxFindUniqueArgs} args - Arguments to find a Tax
+     * @example
+     * // Get one Tax
+     * const tax = await prisma.tax.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TaxFindUniqueArgs>(args: SelectSubset<T, TaxFindUniqueArgs<ExtArgs>>): Prisma__TaxClient<$Result.GetResult<Prisma.$TaxPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tax that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TaxFindUniqueOrThrowArgs} args - Arguments to find a Tax
+     * @example
+     * // Get one Tax
+     * const tax = await prisma.tax.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TaxFindUniqueOrThrowArgs>(args: SelectSubset<T, TaxFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TaxClient<$Result.GetResult<Prisma.$TaxPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tax that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TaxFindFirstArgs} args - Arguments to find a Tax
+     * @example
+     * // Get one Tax
+     * const tax = await prisma.tax.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TaxFindFirstArgs>(args?: SelectSubset<T, TaxFindFirstArgs<ExtArgs>>): Prisma__TaxClient<$Result.GetResult<Prisma.$TaxPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tax that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TaxFindFirstOrThrowArgs} args - Arguments to find a Tax
+     * @example
+     * // Get one Tax
+     * const tax = await prisma.tax.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TaxFindFirstOrThrowArgs>(args?: SelectSubset<T, TaxFindFirstOrThrowArgs<ExtArgs>>): Prisma__TaxClient<$Result.GetResult<Prisma.$TaxPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Taxes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TaxFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Taxes
+     * const taxes = await prisma.tax.findMany()
+     * 
+     * // Get first 10 Taxes
+     * const taxes = await prisma.tax.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const taxWithIdOnly = await prisma.tax.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TaxFindManyArgs>(args?: SelectSubset<T, TaxFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaxPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tax.
+     * @param {TaxCreateArgs} args - Arguments to create a Tax.
+     * @example
+     * // Create one Tax
+     * const Tax = await prisma.tax.create({
+     *   data: {
+     *     // ... data to create a Tax
+     *   }
+     * })
+     * 
+     */
+    create<T extends TaxCreateArgs>(args: SelectSubset<T, TaxCreateArgs<ExtArgs>>): Prisma__TaxClient<$Result.GetResult<Prisma.$TaxPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Taxes.
+     * @param {TaxCreateManyArgs} args - Arguments to create many Taxes.
+     * @example
+     * // Create many Taxes
+     * const tax = await prisma.tax.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TaxCreateManyArgs>(args?: SelectSubset<T, TaxCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Taxes and returns the data saved in the database.
+     * @param {TaxCreateManyAndReturnArgs} args - Arguments to create many Taxes.
+     * @example
+     * // Create many Taxes
+     * const tax = await prisma.tax.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Taxes and only return the `id`
+     * const taxWithIdOnly = await prisma.tax.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TaxCreateManyAndReturnArgs>(args?: SelectSubset<T, TaxCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaxPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Tax.
+     * @param {TaxDeleteArgs} args - Arguments to delete one Tax.
+     * @example
+     * // Delete one Tax
+     * const Tax = await prisma.tax.delete({
+     *   where: {
+     *     // ... filter to delete one Tax
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TaxDeleteArgs>(args: SelectSubset<T, TaxDeleteArgs<ExtArgs>>): Prisma__TaxClient<$Result.GetResult<Prisma.$TaxPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tax.
+     * @param {TaxUpdateArgs} args - Arguments to update one Tax.
+     * @example
+     * // Update one Tax
+     * const tax = await prisma.tax.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TaxUpdateArgs>(args: SelectSubset<T, TaxUpdateArgs<ExtArgs>>): Prisma__TaxClient<$Result.GetResult<Prisma.$TaxPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Taxes.
+     * @param {TaxDeleteManyArgs} args - Arguments to filter Taxes to delete.
+     * @example
+     * // Delete a few Taxes
+     * const { count } = await prisma.tax.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TaxDeleteManyArgs>(args?: SelectSubset<T, TaxDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Taxes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TaxUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Taxes
+     * const tax = await prisma.tax.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TaxUpdateManyArgs>(args: SelectSubset<T, TaxUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Taxes and returns the data updated in the database.
+     * @param {TaxUpdateManyAndReturnArgs} args - Arguments to update many Taxes.
+     * @example
+     * // Update many Taxes
+     * const tax = await prisma.tax.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Taxes and only return the `id`
+     * const taxWithIdOnly = await prisma.tax.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TaxUpdateManyAndReturnArgs>(args: SelectSubset<T, TaxUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaxPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Tax.
+     * @param {TaxUpsertArgs} args - Arguments to update or create a Tax.
+     * @example
+     * // Update or create a Tax
+     * const tax = await prisma.tax.upsert({
+     *   create: {
+     *     // ... data to create a Tax
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tax we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TaxUpsertArgs>(args: SelectSubset<T, TaxUpsertArgs<ExtArgs>>): Prisma__TaxClient<$Result.GetResult<Prisma.$TaxPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Taxes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TaxCountArgs} args - Arguments to filter Taxes to count.
+     * @example
+     * // Count the number of Taxes
+     * const count = await prisma.tax.count({
+     *   where: {
+     *     // ... the filter for the Taxes we want to count
+     *   }
+     * })
+    **/
+    count<T extends TaxCountArgs>(
+      args?: Subset<T, TaxCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TaxCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tax.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TaxAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TaxAggregateArgs>(args: Subset<T, TaxAggregateArgs>): Prisma.PrismaPromise<GetTaxAggregateType<T>>
+
+    /**
+     * Group by Tax.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TaxGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TaxGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TaxGroupByArgs['orderBy'] }
+        : { orderBy?: TaxGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TaxGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTaxGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Tax model
+   */
+  readonly fields: TaxFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Tax.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TaxClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Tax model
+   */
+  interface TaxFieldRefs {
+    readonly id: FieldRef<"Tax", 'Int'>
+    readonly name: FieldRef<"Tax", 'String'>
+    readonly rate: FieldRef<"Tax", 'Float'>
+    readonly isActive: FieldRef<"Tax", 'Boolean'>
+    readonly isDefault: FieldRef<"Tax", 'Boolean'>
+    readonly createdAt: FieldRef<"Tax", 'DateTime'>
+    readonly updatedAt: FieldRef<"Tax", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Tax findUnique
+   */
+  export type TaxFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
+    /**
+     * Filter, which Tax to fetch.
+     */
+    where: TaxWhereUniqueInput
+  }
+
+  /**
+   * Tax findUniqueOrThrow
+   */
+  export type TaxFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
+    /**
+     * Filter, which Tax to fetch.
+     */
+    where: TaxWhereUniqueInput
+  }
+
+  /**
+   * Tax findFirst
+   */
+  export type TaxFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
+    /**
+     * Filter, which Tax to fetch.
+     */
+    where?: TaxWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Taxes to fetch.
+     */
+    orderBy?: TaxOrderByWithRelationInput | TaxOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Taxes.
+     */
+    cursor?: TaxWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Taxes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Taxes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Taxes.
+     */
+    distinct?: TaxScalarFieldEnum | TaxScalarFieldEnum[]
+  }
+
+  /**
+   * Tax findFirstOrThrow
+   */
+  export type TaxFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
+    /**
+     * Filter, which Tax to fetch.
+     */
+    where?: TaxWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Taxes to fetch.
+     */
+    orderBy?: TaxOrderByWithRelationInput | TaxOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Taxes.
+     */
+    cursor?: TaxWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Taxes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Taxes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Taxes.
+     */
+    distinct?: TaxScalarFieldEnum | TaxScalarFieldEnum[]
+  }
+
+  /**
+   * Tax findMany
+   */
+  export type TaxFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
+    /**
+     * Filter, which Taxes to fetch.
+     */
+    where?: TaxWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Taxes to fetch.
+     */
+    orderBy?: TaxOrderByWithRelationInput | TaxOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Taxes.
+     */
+    cursor?: TaxWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Taxes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Taxes.
+     */
+    skip?: number
+    distinct?: TaxScalarFieldEnum | TaxScalarFieldEnum[]
+  }
+
+  /**
+   * Tax create
+   */
+  export type TaxCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Tax.
+     */
+    data: XOR<TaxCreateInput, TaxUncheckedCreateInput>
+  }
+
+  /**
+   * Tax createMany
+   */
+  export type TaxCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Taxes.
+     */
+    data: TaxCreateManyInput | TaxCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Tax createManyAndReturn
+   */
+  export type TaxCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
+    /**
+     * The data used to create many Taxes.
+     */
+    data: TaxCreateManyInput | TaxCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Tax update
+   */
+  export type TaxUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Tax.
+     */
+    data: XOR<TaxUpdateInput, TaxUncheckedUpdateInput>
+    /**
+     * Choose, which Tax to update.
+     */
+    where: TaxWhereUniqueInput
+  }
+
+  /**
+   * Tax updateMany
+   */
+  export type TaxUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Taxes.
+     */
+    data: XOR<TaxUpdateManyMutationInput, TaxUncheckedUpdateManyInput>
+    /**
+     * Filter which Taxes to update
+     */
+    where?: TaxWhereInput
+    /**
+     * Limit how many Taxes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Tax updateManyAndReturn
+   */
+  export type TaxUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
+    /**
+     * The data used to update Taxes.
+     */
+    data: XOR<TaxUpdateManyMutationInput, TaxUncheckedUpdateManyInput>
+    /**
+     * Filter which Taxes to update
+     */
+    where?: TaxWhereInput
+    /**
+     * Limit how many Taxes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Tax upsert
+   */
+  export type TaxUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Tax to update in case it exists.
+     */
+    where: TaxWhereUniqueInput
+    /**
+     * In case the Tax found by the `where` argument doesn't exist, create a new Tax with this data.
+     */
+    create: XOR<TaxCreateInput, TaxUncheckedCreateInput>
+    /**
+     * In case the Tax was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TaxUpdateInput, TaxUncheckedUpdateInput>
+  }
+
+  /**
+   * Tax delete
+   */
+  export type TaxDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
+    /**
+     * Filter which Tax to delete.
+     */
+    where: TaxWhereUniqueInput
+  }
+
+  /**
+   * Tax deleteMany
+   */
+  export type TaxDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Taxes to delete
+     */
+    where?: TaxWhereInput
+    /**
+     * Limit how many Taxes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Tax without action
+   */
+  export type TaxDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tax
+     */
+    select?: TaxSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tax
+     */
+    omit?: TaxOmit<ExtArgs> | null
   }
 
 
@@ -8353,6 +10896,7 @@ export namespace Prisma {
     name: 'name',
     email: 'email',
     phone: 'phone',
+    address: 'address',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -8363,13 +10907,18 @@ export namespace Prisma {
   export const SaleScalarFieldEnum: {
     id: 'id',
     total: 'total',
+    subtotal: 'subtotal',
+    taxAmount: 'taxAmount',
+    taxRate: 'taxRate',
     paymentAmount: 'paymentAmount',
     change: 'change',
     paymentMethod: 'paymentMethod',
+    invoiceNumber: 'invoiceNumber',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     userId: 'userId',
-    customerId: 'customerId'
+    customerId: 'customerId',
+    companyId: 'companyId'
   };
 
   export type SaleScalarFieldEnum = (typeof SaleScalarFieldEnum)[keyof typeof SaleScalarFieldEnum]
@@ -8405,6 +10954,35 @@ export namespace Prisma {
   };
 
   export type CompanyScalarFieldEnum = (typeof CompanyScalarFieldEnum)[keyof typeof CompanyScalarFieldEnum]
+
+
+  export const CurrencyScalarFieldEnum: {
+    id: 'id',
+    code: 'code',
+    name: 'name',
+    symbol: 'symbol',
+    precision: 'precision',
+    thousandSeparator: 'thousandSeparator',
+    decimalSeparator: 'decimalSeparator',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CurrencyScalarFieldEnum = (typeof CurrencyScalarFieldEnum)[keyof typeof CurrencyScalarFieldEnum]
+
+
+  export const TaxScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    rate: 'rate',
+    isActive: 'isActive',
+    isDefault: 'isDefault',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TaxScalarFieldEnum = (typeof TaxScalarFieldEnum)[keyof typeof TaxScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8489,6 +11067,13 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
   /**
    * Deep Input Types
@@ -8642,6 +11227,7 @@ export namespace Prisma {
     name?: StringFilter<"Customer"> | string
     email?: StringNullableFilter<"Customer"> | string | null
     phone?: StringNullableFilter<"Customer"> | string | null
+    address?: StringNullableFilter<"Customer"> | string | null
     createdAt?: DateTimeFilter<"Customer"> | Date | string
     updatedAt?: DateTimeFilter<"Customer"> | Date | string
     sales?: SaleListRelationFilter
@@ -8652,6 +11238,7 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     sales?: SaleOrderByRelationAggregateInput
@@ -8665,6 +11252,7 @@ export namespace Prisma {
     name?: StringFilter<"Customer"> | string
     email?: StringNullableFilter<"Customer"> | string | null
     phone?: StringNullableFilter<"Customer"> | string | null
+    address?: StringNullableFilter<"Customer"> | string | null
     createdAt?: DateTimeFilter<"Customer"> | Date | string
     updatedAt?: DateTimeFilter<"Customer"> | Date | string
     sales?: SaleListRelationFilter
@@ -8675,6 +11263,7 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CustomerCountOrderByAggregateInput
@@ -8692,6 +11281,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Customer"> | string
     email?: StringNullableWithAggregatesFilter<"Customer"> | string | null
     phone?: StringNullableWithAggregatesFilter<"Customer"> | string | null
+    address?: StringNullableWithAggregatesFilter<"Customer"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Customer"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Customer"> | Date | string
   }
@@ -8702,39 +11292,55 @@ export namespace Prisma {
     NOT?: SaleWhereInput | SaleWhereInput[]
     id?: IntFilter<"Sale"> | number
     total?: FloatFilter<"Sale"> | number
+    subtotal?: FloatFilter<"Sale"> | number
+    taxAmount?: FloatFilter<"Sale"> | number
+    taxRate?: FloatFilter<"Sale"> | number
     paymentAmount?: FloatFilter<"Sale"> | number
     change?: FloatFilter<"Sale"> | number
     paymentMethod?: StringFilter<"Sale"> | string
+    invoiceNumber?: StringNullableFilter<"Sale"> | string | null
     createdAt?: DateTimeFilter<"Sale"> | Date | string
     updatedAt?: DateTimeFilter<"Sale"> | Date | string
     userId?: IntFilter<"Sale"> | number
     customerId?: IntNullableFilter<"Sale"> | number | null
+    companyId?: StringFilter<"Sale"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     customer?: XOR<CustomerNullableScalarRelationFilter, CustomerWhereInput> | null
+    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
     items?: SaleItemListRelationFilter
   }
 
   export type SaleOrderByWithRelationInput = {
     id?: SortOrder
     total?: SortOrder
+    subtotal?: SortOrder
+    taxAmount?: SortOrder
+    taxRate?: SortOrder
     paymentAmount?: SortOrder
     change?: SortOrder
     paymentMethod?: SortOrder
+    invoiceNumber?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
     customerId?: SortOrderInput | SortOrder
+    companyId?: SortOrder
     user?: UserOrderByWithRelationInput
     customer?: CustomerOrderByWithRelationInput
+    company?: CompanyOrderByWithRelationInput
     items?: SaleItemOrderByRelationAggregateInput
   }
 
   export type SaleWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    invoiceNumber?: string
     AND?: SaleWhereInput | SaleWhereInput[]
     OR?: SaleWhereInput[]
     NOT?: SaleWhereInput | SaleWhereInput[]
     total?: FloatFilter<"Sale"> | number
+    subtotal?: FloatFilter<"Sale"> | number
+    taxAmount?: FloatFilter<"Sale"> | number
+    taxRate?: FloatFilter<"Sale"> | number
     paymentAmount?: FloatFilter<"Sale"> | number
     change?: FloatFilter<"Sale"> | number
     paymentMethod?: StringFilter<"Sale"> | string
@@ -8742,21 +11348,28 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Sale"> | Date | string
     userId?: IntFilter<"Sale"> | number
     customerId?: IntNullableFilter<"Sale"> | number | null
+    companyId?: StringFilter<"Sale"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     customer?: XOR<CustomerNullableScalarRelationFilter, CustomerWhereInput> | null
+    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
     items?: SaleItemListRelationFilter
-  }, "id">
+  }, "id" | "invoiceNumber">
 
   export type SaleOrderByWithAggregationInput = {
     id?: SortOrder
     total?: SortOrder
+    subtotal?: SortOrder
+    taxAmount?: SortOrder
+    taxRate?: SortOrder
     paymentAmount?: SortOrder
     change?: SortOrder
     paymentMethod?: SortOrder
+    invoiceNumber?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
     customerId?: SortOrderInput | SortOrder
+    companyId?: SortOrder
     _count?: SaleCountOrderByAggregateInput
     _avg?: SaleAvgOrderByAggregateInput
     _max?: SaleMaxOrderByAggregateInput
@@ -8770,13 +11383,18 @@ export namespace Prisma {
     NOT?: SaleScalarWhereWithAggregatesInput | SaleScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Sale"> | number
     total?: FloatWithAggregatesFilter<"Sale"> | number
+    subtotal?: FloatWithAggregatesFilter<"Sale"> | number
+    taxAmount?: FloatWithAggregatesFilter<"Sale"> | number
+    taxRate?: FloatWithAggregatesFilter<"Sale"> | number
     paymentAmount?: FloatWithAggregatesFilter<"Sale"> | number
     change?: FloatWithAggregatesFilter<"Sale"> | number
     paymentMethod?: StringWithAggregatesFilter<"Sale"> | string
+    invoiceNumber?: StringNullableWithAggregatesFilter<"Sale"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Sale"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Sale"> | Date | string
     userId?: IntWithAggregatesFilter<"Sale"> | number
     customerId?: IntNullableWithAggregatesFilter<"Sale"> | number | null
+    companyId?: StringWithAggregatesFilter<"Sale"> | string
   }
 
   export type SaleItemWhereInput = {
@@ -8858,6 +11476,7 @@ export namespace Prisma {
     country?: StringFilter<"Company"> | string
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
+    sales?: SaleListRelationFilter
   }
 
   export type CompanyOrderByWithRelationInput = {
@@ -8876,6 +11495,7 @@ export namespace Prisma {
     country?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sales?: SaleOrderByRelationAggregateInput
   }
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -8897,6 +11517,7 @@ export namespace Prisma {
     country?: StringFilter<"Company"> | string
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
+    sales?: SaleListRelationFilter
   }, "id" | "email">
 
   export type CompanyOrderByWithAggregationInput = {
@@ -8939,6 +11560,149 @@ export namespace Prisma {
     country?: StringWithAggregatesFilter<"Company"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
+  }
+
+  export type CurrencyWhereInput = {
+    AND?: CurrencyWhereInput | CurrencyWhereInput[]
+    OR?: CurrencyWhereInput[]
+    NOT?: CurrencyWhereInput | CurrencyWhereInput[]
+    id?: IntFilter<"Currency"> | number
+    code?: StringFilter<"Currency"> | string
+    name?: StringFilter<"Currency"> | string
+    symbol?: StringFilter<"Currency"> | string
+    precision?: IntFilter<"Currency"> | number
+    thousandSeparator?: StringFilter<"Currency"> | string
+    decimalSeparator?: StringFilter<"Currency"> | string
+    isActive?: BoolFilter<"Currency"> | boolean
+    createdAt?: DateTimeFilter<"Currency"> | Date | string
+    updatedAt?: DateTimeFilter<"Currency"> | Date | string
+  }
+
+  export type CurrencyOrderByWithRelationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    symbol?: SortOrder
+    precision?: SortOrder
+    thousandSeparator?: SortOrder
+    decimalSeparator?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CurrencyWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    code?: string
+    AND?: CurrencyWhereInput | CurrencyWhereInput[]
+    OR?: CurrencyWhereInput[]
+    NOT?: CurrencyWhereInput | CurrencyWhereInput[]
+    name?: StringFilter<"Currency"> | string
+    symbol?: StringFilter<"Currency"> | string
+    precision?: IntFilter<"Currency"> | number
+    thousandSeparator?: StringFilter<"Currency"> | string
+    decimalSeparator?: StringFilter<"Currency"> | string
+    isActive?: BoolFilter<"Currency"> | boolean
+    createdAt?: DateTimeFilter<"Currency"> | Date | string
+    updatedAt?: DateTimeFilter<"Currency"> | Date | string
+  }, "id" | "code">
+
+  export type CurrencyOrderByWithAggregationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    symbol?: SortOrder
+    precision?: SortOrder
+    thousandSeparator?: SortOrder
+    decimalSeparator?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CurrencyCountOrderByAggregateInput
+    _avg?: CurrencyAvgOrderByAggregateInput
+    _max?: CurrencyMaxOrderByAggregateInput
+    _min?: CurrencyMinOrderByAggregateInput
+    _sum?: CurrencySumOrderByAggregateInput
+  }
+
+  export type CurrencyScalarWhereWithAggregatesInput = {
+    AND?: CurrencyScalarWhereWithAggregatesInput | CurrencyScalarWhereWithAggregatesInput[]
+    OR?: CurrencyScalarWhereWithAggregatesInput[]
+    NOT?: CurrencyScalarWhereWithAggregatesInput | CurrencyScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Currency"> | number
+    code?: StringWithAggregatesFilter<"Currency"> | string
+    name?: StringWithAggregatesFilter<"Currency"> | string
+    symbol?: StringWithAggregatesFilter<"Currency"> | string
+    precision?: IntWithAggregatesFilter<"Currency"> | number
+    thousandSeparator?: StringWithAggregatesFilter<"Currency"> | string
+    decimalSeparator?: StringWithAggregatesFilter<"Currency"> | string
+    isActive?: BoolWithAggregatesFilter<"Currency"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Currency"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Currency"> | Date | string
+  }
+
+  export type TaxWhereInput = {
+    AND?: TaxWhereInput | TaxWhereInput[]
+    OR?: TaxWhereInput[]
+    NOT?: TaxWhereInput | TaxWhereInput[]
+    id?: IntFilter<"Tax"> | number
+    name?: StringFilter<"Tax"> | string
+    rate?: FloatFilter<"Tax"> | number
+    isActive?: BoolFilter<"Tax"> | boolean
+    isDefault?: BoolFilter<"Tax"> | boolean
+    createdAt?: DateTimeFilter<"Tax"> | Date | string
+    updatedAt?: DateTimeFilter<"Tax"> | Date | string
+  }
+
+  export type TaxOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    rate?: SortOrder
+    isActive?: SortOrder
+    isDefault?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TaxWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TaxWhereInput | TaxWhereInput[]
+    OR?: TaxWhereInput[]
+    NOT?: TaxWhereInput | TaxWhereInput[]
+    name?: StringFilter<"Tax"> | string
+    rate?: FloatFilter<"Tax"> | number
+    isActive?: BoolFilter<"Tax"> | boolean
+    isDefault?: BoolFilter<"Tax"> | boolean
+    createdAt?: DateTimeFilter<"Tax"> | Date | string
+    updatedAt?: DateTimeFilter<"Tax"> | Date | string
+  }, "id">
+
+  export type TaxOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    rate?: SortOrder
+    isActive?: SortOrder
+    isDefault?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TaxCountOrderByAggregateInput
+    _avg?: TaxAvgOrderByAggregateInput
+    _max?: TaxMaxOrderByAggregateInput
+    _min?: TaxMinOrderByAggregateInput
+    _sum?: TaxSumOrderByAggregateInput
+  }
+
+  export type TaxScalarWhereWithAggregatesInput = {
+    AND?: TaxScalarWhereWithAggregatesInput | TaxScalarWhereWithAggregatesInput[]
+    OR?: TaxScalarWhereWithAggregatesInput[]
+    NOT?: TaxScalarWhereWithAggregatesInput | TaxScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Tax"> | number
+    name?: StringWithAggregatesFilter<"Tax"> | string
+    rate?: FloatWithAggregatesFilter<"Tax"> | number
+    isActive?: BoolWithAggregatesFilter<"Tax"> | boolean
+    isDefault?: BoolWithAggregatesFilter<"Tax"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Tax"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Tax"> | Date | string
   }
 
   export type ProductCreateInput = {
@@ -9094,6 +11858,7 @@ export namespace Prisma {
     name: string
     email?: string | null
     phone?: string | null
+    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     sales?: SaleCreateNestedManyWithoutCustomerInput
@@ -9104,6 +11869,7 @@ export namespace Prisma {
     name: string
     email?: string | null
     phone?: string | null
+    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     sales?: SaleUncheckedCreateNestedManyWithoutCustomerInput
@@ -9113,6 +11879,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sales?: SaleUpdateManyWithoutCustomerNestedInput
@@ -9123,6 +11890,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sales?: SaleUncheckedUpdateManyWithoutCustomerNestedInput
@@ -9133,6 +11901,7 @@ export namespace Prisma {
     name: string
     email?: string | null
     phone?: string | null
+    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9141,6 +11910,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9150,77 +11920,107 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SaleCreateInput = {
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod?: string
+    invoiceNumber?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutSalesInput
     customer?: CustomerCreateNestedOneWithoutSalesInput
+    company: CompanyCreateNestedOneWithoutSalesInput
     items?: SaleItemCreateNestedManyWithoutSaleInput
   }
 
   export type SaleUncheckedCreateInput = {
     id?: number
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod?: string
+    invoiceNumber?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: number
     customerId?: number | null
+    companyId: string
     items?: SaleItemUncheckedCreateNestedManyWithoutSaleInput
   }
 
   export type SaleUpdateInput = {
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSalesNestedInput
     customer?: CustomerUpdateOneWithoutSalesNestedInput
+    company?: CompanyUpdateOneRequiredWithoutSalesNestedInput
     items?: SaleItemUpdateManyWithoutSaleNestedInput
   }
 
   export type SaleUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
+    companyId?: StringFieldUpdateOperationsInput | string
     items?: SaleItemUncheckedUpdateManyWithoutSaleNestedInput
   }
 
   export type SaleCreateManyInput = {
     id?: number
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod?: string
+    invoiceNumber?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: number
     customerId?: number | null
+    companyId: string
   }
 
   export type SaleUpdateManyMutationInput = {
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9228,13 +12028,18 @@ export namespace Prisma {
   export type SaleUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
+    companyId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SaleItemCreateInput = {
@@ -9304,6 +12109,7 @@ export namespace Prisma {
     country: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    sales?: SaleCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateInput = {
@@ -9322,6 +12128,7 @@ export namespace Prisma {
     country: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    sales?: SaleUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUpdateInput = {
@@ -9340,6 +12147,7 @@ export namespace Prisma {
     country?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sales?: SaleUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateInput = {
@@ -9358,6 +12166,7 @@ export namespace Prisma {
     country?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sales?: SaleUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateManyInput = {
@@ -9410,6 +12219,161 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     postalCode?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CurrencyCreateInput = {
+    code: string
+    name: string
+    symbol: string
+    precision?: number
+    thousandSeparator?: string
+    decimalSeparator?: string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CurrencyUncheckedCreateInput = {
+    id?: number
+    code: string
+    name: string
+    symbol: string
+    precision?: number
+    thousandSeparator?: string
+    decimalSeparator?: string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CurrencyUpdateInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    precision?: IntFieldUpdateOperationsInput | number
+    thousandSeparator?: StringFieldUpdateOperationsInput | string
+    decimalSeparator?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CurrencyUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    precision?: IntFieldUpdateOperationsInput | number
+    thousandSeparator?: StringFieldUpdateOperationsInput | string
+    decimalSeparator?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CurrencyCreateManyInput = {
+    id?: number
+    code: string
+    name: string
+    symbol: string
+    precision?: number
+    thousandSeparator?: string
+    decimalSeparator?: string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CurrencyUpdateManyMutationInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    precision?: IntFieldUpdateOperationsInput | number
+    thousandSeparator?: StringFieldUpdateOperationsInput | string
+    decimalSeparator?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CurrencyUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    precision?: IntFieldUpdateOperationsInput | number
+    thousandSeparator?: StringFieldUpdateOperationsInput | string
+    decimalSeparator?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TaxCreateInput = {
+    name: string
+    rate: number
+    isActive?: boolean
+    isDefault?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TaxUncheckedCreateInput = {
+    id?: number
+    name: string
+    rate: number
+    isActive?: boolean
+    isDefault?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TaxUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    rate?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TaxUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    rate?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TaxCreateManyInput = {
+    id?: number
+    name: string
+    rate: number
+    isActive?: boolean
+    isDefault?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TaxUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    rate?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TaxUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    rate?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9672,6 +12636,7 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9685,6 +12650,7 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9694,6 +12660,7 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9723,21 +12690,34 @@ export namespace Prisma {
     isNot?: CustomerWhereInput | null
   }
 
+  export type CompanyScalarRelationFilter = {
+    is?: CompanyWhereInput
+    isNot?: CompanyWhereInput
+  }
+
   export type SaleCountOrderByAggregateInput = {
     id?: SortOrder
     total?: SortOrder
+    subtotal?: SortOrder
+    taxAmount?: SortOrder
+    taxRate?: SortOrder
     paymentAmount?: SortOrder
     change?: SortOrder
     paymentMethod?: SortOrder
+    invoiceNumber?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
     customerId?: SortOrder
+    companyId?: SortOrder
   }
 
   export type SaleAvgOrderByAggregateInput = {
     id?: SortOrder
     total?: SortOrder
+    subtotal?: SortOrder
+    taxAmount?: SortOrder
+    taxRate?: SortOrder
     paymentAmount?: SortOrder
     change?: SortOrder
     userId?: SortOrder
@@ -9747,30 +12727,43 @@ export namespace Prisma {
   export type SaleMaxOrderByAggregateInput = {
     id?: SortOrder
     total?: SortOrder
+    subtotal?: SortOrder
+    taxAmount?: SortOrder
+    taxRate?: SortOrder
     paymentAmount?: SortOrder
     change?: SortOrder
     paymentMethod?: SortOrder
+    invoiceNumber?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
     customerId?: SortOrder
+    companyId?: SortOrder
   }
 
   export type SaleMinOrderByAggregateInput = {
     id?: SortOrder
     total?: SortOrder
+    subtotal?: SortOrder
+    taxAmount?: SortOrder
+    taxRate?: SortOrder
     paymentAmount?: SortOrder
     change?: SortOrder
     paymentMethod?: SortOrder
+    invoiceNumber?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
     customerId?: SortOrder
+    companyId?: SortOrder
   }
 
   export type SaleSumOrderByAggregateInput = {
     id?: SortOrder
     total?: SortOrder
+    subtotal?: SortOrder
+    taxAmount?: SortOrder
+    taxRate?: SortOrder
     paymentAmount?: SortOrder
     change?: SortOrder
     userId?: SortOrder
@@ -9895,6 +12888,108 @@ export namespace Prisma {
     country?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type CurrencyCountOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    symbol?: SortOrder
+    precision?: SortOrder
+    thousandSeparator?: SortOrder
+    decimalSeparator?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CurrencyAvgOrderByAggregateInput = {
+    id?: SortOrder
+    precision?: SortOrder
+  }
+
+  export type CurrencyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    symbol?: SortOrder
+    precision?: SortOrder
+    thousandSeparator?: SortOrder
+    decimalSeparator?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CurrencyMinOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    symbol?: SortOrder
+    precision?: SortOrder
+    thousandSeparator?: SortOrder
+    decimalSeparator?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CurrencySumOrderByAggregateInput = {
+    id?: SortOrder
+    precision?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type TaxCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    rate?: SortOrder
+    isActive?: SortOrder
+    isDefault?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TaxAvgOrderByAggregateInput = {
+    id?: SortOrder
+    rate?: SortOrder
+  }
+
+  export type TaxMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    rate?: SortOrder
+    isActive?: SortOrder
+    isDefault?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TaxMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    rate?: SortOrder
+    isActive?: SortOrder
+    isDefault?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TaxSumOrderByAggregateInput = {
+    id?: SortOrder
+    rate?: SortOrder
   }
 
   export type SaleItemCreateNestedManyWithoutProductInput = {
@@ -10063,6 +13158,12 @@ export namespace Prisma {
     connect?: CustomerWhereUniqueInput
   }
 
+  export type CompanyCreateNestedOneWithoutSalesInput = {
+    create?: XOR<CompanyCreateWithoutSalesInput, CompanyUncheckedCreateWithoutSalesInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutSalesInput
+    connect?: CompanyWhereUniqueInput
+  }
+
   export type SaleItemCreateNestedManyWithoutSaleInput = {
     create?: XOR<SaleItemCreateWithoutSaleInput, SaleItemUncheckedCreateWithoutSaleInput> | SaleItemCreateWithoutSaleInput[] | SaleItemUncheckedCreateWithoutSaleInput[]
     connectOrCreate?: SaleItemCreateOrConnectWithoutSaleInput | SaleItemCreateOrConnectWithoutSaleInput[]
@@ -10093,6 +13194,14 @@ export namespace Prisma {
     delete?: CustomerWhereInput | boolean
     connect?: CustomerWhereUniqueInput
     update?: XOR<XOR<CustomerUpdateToOneWithWhereWithoutSalesInput, CustomerUpdateWithoutSalesInput>, CustomerUncheckedUpdateWithoutSalesInput>
+  }
+
+  export type CompanyUpdateOneRequiredWithoutSalesNestedInput = {
+    create?: XOR<CompanyCreateWithoutSalesInput, CompanyUncheckedCreateWithoutSalesInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutSalesInput
+    upsert?: CompanyUpsertWithoutSalesInput
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutSalesInput, CompanyUpdateWithoutSalesInput>, CompanyUncheckedUpdateWithoutSalesInput>
   }
 
   export type SaleItemUpdateManyWithoutSaleNestedInput = {
@@ -10157,6 +13266,52 @@ export namespace Prisma {
     upsert?: ProductUpsertWithoutSaleItemsInput
     connect?: ProductWhereUniqueInput
     update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutSaleItemsInput, ProductUpdateWithoutSaleItemsInput>, ProductUncheckedUpdateWithoutSaleItemsInput>
+  }
+
+  export type SaleCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<SaleCreateWithoutCompanyInput, SaleUncheckedCreateWithoutCompanyInput> | SaleCreateWithoutCompanyInput[] | SaleUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: SaleCreateOrConnectWithoutCompanyInput | SaleCreateOrConnectWithoutCompanyInput[]
+    createMany?: SaleCreateManyCompanyInputEnvelope
+    connect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+  }
+
+  export type SaleUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<SaleCreateWithoutCompanyInput, SaleUncheckedCreateWithoutCompanyInput> | SaleCreateWithoutCompanyInput[] | SaleUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: SaleCreateOrConnectWithoutCompanyInput | SaleCreateOrConnectWithoutCompanyInput[]
+    createMany?: SaleCreateManyCompanyInputEnvelope
+    connect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+  }
+
+  export type SaleUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<SaleCreateWithoutCompanyInput, SaleUncheckedCreateWithoutCompanyInput> | SaleCreateWithoutCompanyInput[] | SaleUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: SaleCreateOrConnectWithoutCompanyInput | SaleCreateOrConnectWithoutCompanyInput[]
+    upsert?: SaleUpsertWithWhereUniqueWithoutCompanyInput | SaleUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: SaleCreateManyCompanyInputEnvelope
+    set?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    disconnect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    delete?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    connect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    update?: SaleUpdateWithWhereUniqueWithoutCompanyInput | SaleUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: SaleUpdateManyWithWhereWithoutCompanyInput | SaleUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: SaleScalarWhereInput | SaleScalarWhereInput[]
+  }
+
+  export type SaleUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<SaleCreateWithoutCompanyInput, SaleUncheckedCreateWithoutCompanyInput> | SaleCreateWithoutCompanyInput[] | SaleUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: SaleCreateOrConnectWithoutCompanyInput | SaleCreateOrConnectWithoutCompanyInput[]
+    upsert?: SaleUpsertWithWhereUniqueWithoutCompanyInput | SaleUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: SaleCreateManyCompanyInputEnvelope
+    set?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    disconnect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    delete?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    connect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    update?: SaleUpdateWithWhereUniqueWithoutCompanyInput | SaleUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: SaleUpdateManyWithWhereWithoutCompanyInput | SaleUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: SaleScalarWhereInput | SaleScalarWhereInput[]
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -10338,6 +13493,19 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type SaleItemCreateWithoutProductInput = {
     quantity: number
     price: number
@@ -10390,24 +13558,34 @@ export namespace Prisma {
 
   export type SaleCreateWithoutUserInput = {
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod?: string
+    invoiceNumber?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     customer?: CustomerCreateNestedOneWithoutSalesInput
+    company: CompanyCreateNestedOneWithoutSalesInput
     items?: SaleItemCreateNestedManyWithoutSaleInput
   }
 
   export type SaleUncheckedCreateWithoutUserInput = {
     id?: number
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod?: string
+    invoiceNumber?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     customerId?: number | null
+    companyId: string
     items?: SaleItemUncheckedCreateNestedManyWithoutSaleInput
   }
 
@@ -10443,35 +13621,50 @@ export namespace Prisma {
     NOT?: SaleScalarWhereInput | SaleScalarWhereInput[]
     id?: IntFilter<"Sale"> | number
     total?: FloatFilter<"Sale"> | number
+    subtotal?: FloatFilter<"Sale"> | number
+    taxAmount?: FloatFilter<"Sale"> | number
+    taxRate?: FloatFilter<"Sale"> | number
     paymentAmount?: FloatFilter<"Sale"> | number
     change?: FloatFilter<"Sale"> | number
     paymentMethod?: StringFilter<"Sale"> | string
+    invoiceNumber?: StringNullableFilter<"Sale"> | string | null
     createdAt?: DateTimeFilter<"Sale"> | Date | string
     updatedAt?: DateTimeFilter<"Sale"> | Date | string
     userId?: IntFilter<"Sale"> | number
     customerId?: IntNullableFilter<"Sale"> | number | null
+    companyId?: StringFilter<"Sale"> | string
   }
 
   export type SaleCreateWithoutCustomerInput = {
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod?: string
+    invoiceNumber?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutSalesInput
+    company: CompanyCreateNestedOneWithoutSalesInput
     items?: SaleItemCreateNestedManyWithoutSaleInput
   }
 
   export type SaleUncheckedCreateWithoutCustomerInput = {
     id?: number
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod?: string
+    invoiceNumber?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: number
+    companyId: string
     items?: SaleItemUncheckedCreateNestedManyWithoutSaleInput
   }
 
@@ -10527,6 +13720,7 @@ export namespace Prisma {
     name: string
     email?: string | null
     phone?: string | null
+    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10536,6 +13730,7 @@ export namespace Prisma {
     name: string
     email?: string | null
     phone?: string | null
+    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10543,6 +13738,47 @@ export namespace Prisma {
   export type CustomerCreateOrConnectWithoutSalesInput = {
     where: CustomerWhereUniqueInput
     create: XOR<CustomerCreateWithoutSalesInput, CustomerUncheckedCreateWithoutSalesInput>
+  }
+
+  export type CompanyCreateWithoutSalesInput = {
+    id?: string
+    name: string
+    registrationNumber: string
+    email: string
+    phone?: string | null
+    currency?: string
+    timezone?: string
+    logo?: string | null
+    street: string
+    city: string
+    state: string
+    postalCode: string
+    country: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyUncheckedCreateWithoutSalesInput = {
+    id?: string
+    name: string
+    registrationNumber: string
+    email: string
+    phone?: string | null
+    currency?: string
+    timezone?: string
+    logo?: string | null
+    street: string
+    city: string
+    state: string
+    postalCode: string
+    country: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyCreateOrConnectWithoutSalesInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutSalesInput, CompanyUncheckedCreateWithoutSalesInput>
   }
 
   export type SaleItemCreateWithoutSaleInput = {
@@ -10611,6 +13847,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10620,6 +13857,54 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyUpsertWithoutSalesInput = {
+    update: XOR<CompanyUpdateWithoutSalesInput, CompanyUncheckedUpdateWithoutSalesInput>
+    create: XOR<CompanyCreateWithoutSalesInput, CompanyUncheckedCreateWithoutSalesInput>
+    where?: CompanyWhereInput
+  }
+
+  export type CompanyUpdateToOneWithWhereWithoutSalesInput = {
+    where?: CompanyWhereInput
+    data: XOR<CompanyUpdateWithoutSalesInput, CompanyUncheckedUpdateWithoutSalesInput>
+  }
+
+  export type CompanyUpdateWithoutSalesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    registrationNumber?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    timezone?: StringFieldUpdateOperationsInput | string
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    street?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyUncheckedUpdateWithoutSalesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    registrationNumber?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    timezone?: StringFieldUpdateOperationsInput | string
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    street?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10642,25 +13927,35 @@ export namespace Prisma {
 
   export type SaleCreateWithoutItemsInput = {
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod?: string
+    invoiceNumber?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutSalesInput
     customer?: CustomerCreateNestedOneWithoutSalesInput
+    company: CompanyCreateNestedOneWithoutSalesInput
   }
 
   export type SaleUncheckedCreateWithoutItemsInput = {
     id?: number
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod?: string
+    invoiceNumber?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: number
     customerId?: number | null
+    companyId: string
   }
 
   export type SaleCreateOrConnectWithoutItemsInput = {
@@ -10709,25 +14004,35 @@ export namespace Prisma {
 
   export type SaleUpdateWithoutItemsInput = {
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSalesNestedInput
     customer?: CustomerUpdateOneWithoutSalesNestedInput
+    company?: CompanyUpdateOneRequiredWithoutSalesNestedInput
   }
 
   export type SaleUncheckedUpdateWithoutItemsInput = {
     id?: IntFieldUpdateOperationsInput | number
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
+    companyId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductUpsertWithoutSaleItemsInput = {
@@ -10764,6 +14069,65 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type SaleCreateWithoutCompanyInput = {
+    total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
+    paymentAmount: number
+    change: number
+    paymentMethod?: string
+    invoiceNumber?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutSalesInput
+    customer?: CustomerCreateNestedOneWithoutSalesInput
+    items?: SaleItemCreateNestedManyWithoutSaleInput
+  }
+
+  export type SaleUncheckedCreateWithoutCompanyInput = {
+    id?: number
+    total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
+    paymentAmount: number
+    change: number
+    paymentMethod?: string
+    invoiceNumber?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: number
+    customerId?: number | null
+    items?: SaleItemUncheckedCreateNestedManyWithoutSaleInput
+  }
+
+  export type SaleCreateOrConnectWithoutCompanyInput = {
+    where: SaleWhereUniqueInput
+    create: XOR<SaleCreateWithoutCompanyInput, SaleUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type SaleCreateManyCompanyInputEnvelope = {
+    data: SaleCreateManyCompanyInput | SaleCreateManyCompanyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SaleUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: SaleWhereUniqueInput
+    update: XOR<SaleUpdateWithoutCompanyInput, SaleUncheckedUpdateWithoutCompanyInput>
+    create: XOR<SaleCreateWithoutCompanyInput, SaleUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type SaleUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: SaleWhereUniqueInput
+    data: XOR<SaleUpdateWithoutCompanyInput, SaleUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type SaleUpdateManyWithWhereWithoutCompanyInput = {
+    where: SaleScalarWhereInput
+    data: XOR<SaleUpdateManyMutationInput, SaleUncheckedUpdateManyWithoutCompanyInput>
+  }
+
   export type SaleItemCreateManyProductInput = {
     id?: number
     quantity: number
@@ -10794,91 +14158,131 @@ export namespace Prisma {
   export type SaleCreateManyUserInput = {
     id?: number
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod?: string
+    invoiceNumber?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     customerId?: number | null
+    companyId: string
   }
 
   export type SaleUpdateWithoutUserInput = {
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     customer?: CustomerUpdateOneWithoutSalesNestedInput
+    company?: CompanyUpdateOneRequiredWithoutSalesNestedInput
     items?: SaleItemUpdateManyWithoutSaleNestedInput
   }
 
   export type SaleUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
+    companyId?: StringFieldUpdateOperationsInput | string
     items?: SaleItemUncheckedUpdateManyWithoutSaleNestedInput
   }
 
   export type SaleUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
+    companyId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SaleCreateManyCustomerInput = {
     id?: number
     total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
     paymentAmount: number
     change: number
     paymentMethod?: string
+    invoiceNumber?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: number
+    companyId: string
   }
 
   export type SaleUpdateWithoutCustomerInput = {
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSalesNestedInput
+    company?: CompanyUpdateOneRequiredWithoutSalesNestedInput
     items?: SaleItemUpdateManyWithoutSaleNestedInput
   }
 
   export type SaleUncheckedUpdateWithoutCustomerInput = {
     id?: IntFieldUpdateOperationsInput | number
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
+    companyId?: StringFieldUpdateOperationsInput | string
     items?: SaleItemUncheckedUpdateManyWithoutSaleNestedInput
   }
 
   export type SaleUncheckedUpdateManyWithoutCustomerInput = {
     id?: IntFieldUpdateOperationsInput | number
     total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
     paymentAmount?: FloatFieldUpdateOperationsInput | number
     change?: FloatFieldUpdateOperationsInput | number
     paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
+    companyId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SaleItemCreateManySaleInput = {
@@ -10906,6 +14310,71 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     price?: FloatFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type SaleCreateManyCompanyInput = {
+    id?: number
+    total: number
+    subtotal: number
+    taxAmount: number
+    taxRate: number
+    paymentAmount: number
+    change: number
+    paymentMethod?: string
+    invoiceNumber?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: number
+    customerId?: number | null
+  }
+
+  export type SaleUpdateWithoutCompanyInput = {
+    total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
+    paymentAmount?: FloatFieldUpdateOperationsInput | number
+    change?: FloatFieldUpdateOperationsInput | number
+    paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSalesNestedInput
+    customer?: CustomerUpdateOneWithoutSalesNestedInput
+    items?: SaleItemUpdateManyWithoutSaleNestedInput
+  }
+
+  export type SaleUncheckedUpdateWithoutCompanyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
+    paymentAmount?: FloatFieldUpdateOperationsInput | number
+    change?: FloatFieldUpdateOperationsInput | number
+    paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    customerId?: NullableIntFieldUpdateOperationsInput | number | null
+    items?: SaleItemUncheckedUpdateManyWithoutSaleNestedInput
+  }
+
+  export type SaleUncheckedUpdateManyWithoutCompanyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    total?: FloatFieldUpdateOperationsInput | number
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    taxRate?: FloatFieldUpdateOperationsInput | number
+    paymentAmount?: FloatFieldUpdateOperationsInput | number
+    change?: FloatFieldUpdateOperationsInput | number
+    paymentMethod?: StringFieldUpdateOperationsInput | string
+    invoiceNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    customerId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 
