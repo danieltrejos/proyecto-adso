@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
+
+
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { GetProductsDto } from './dto/get-products.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class ProductsService {
   // Inyección de dependencias
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(private readonly prismaService: PrismaService) { }
 
   // POST /api/v1/products
   create(createProductDto: CreateProductDto) {
@@ -23,10 +24,96 @@ export class ProductsService {
       throw new Error('Error al crear el producto');
     }
   }
+  // GET /api/v1/products con paginación y filtros
+  async findAllPaginated(filters: GetProductsDto) {
+    const { page = 1, limit = 10, name, type, minPrice, maxPrice, minStock, all = false } = filters;
 
-  // GET /api/v1/products
+    // Construir el objeto where dinámicamente
+    const where: any = {};
+
+    if (name) {
+      where.name = {
+        contains: name,
+        mode: 'insensitive' // Búsqueda insensible a mayúsculas/minúsculas
+      };
+    }
+
+    if (type) {
+      where.type = {
+        contains: type,
+        mode: 'insensitive'
+      };
+    }
+
+    if (minPrice !== undefined) {
+      where.price = {
+        ...where.price,
+        gte: minPrice
+      };
+    }
+
+    if (maxPrice !== undefined) {
+      where.price = {
+        ...where.price,
+        lte: maxPrice
+      };
+    }
+
+    if (minStock !== undefined) {
+      where.stock = {
+        gte: minStock
+      };
+    }
+
+    // Si se solicita "all", devolver todos los productos sin paginación
+    if (all) {
+      const products = await this.prismaService.product.findMany({
+        where,
+        orderBy: {
+          createdAt: 'desc'
+        }
+      });
+
+      // Para componentes que esperan un array directamente (POS, Inventory)
+      return products;
+    }
+
+    // Calcular offset para paginación
+    const skip = (page - 1) * limit;
+
+    // Ejecutar consultas en paralelo
+    const [products, total] = await Promise.all([
+      this.prismaService.product.findMany({
+        where,
+        skip,
+        take: limit,
+        orderBy: {
+          createdAt: 'desc'
+        }
+      }),
+      this.prismaService.product.count({
+        where
+      })
+    ]);
+
+    const totalPages = Math.ceil(total / limit);
+
+    return {
+      products,
+      total,
+      page,
+      limit,
+      totalPages
+    };
+  }
+
+  // GET /api/v1/products (método original para compatibilidad)
   findAll() {
-    return this.prismaService.product.findMany();
+    return this.prismaService.product.findMany({
+      orderBy: {
+        createdAt: 'desc'
+      }
+    });
   }
 
   // GET /api/v1/products/:id
