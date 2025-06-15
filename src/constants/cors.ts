@@ -8,7 +8,8 @@ export const CORS: CorsOptions = {
     // Añade aquí la URL del frontend en producción cuando se despliegue
     // 'https://tu-aplicacion-frontend.com'
   ],
-  methods: ['GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS'],
-  allowedHeaders: 'Content-Type, Authorization',
-  credentials: true
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+  credentials: true,
+  exposedHeaders: ['Content-Disposition', 'Content-Type', 'Content-Length']
 };

@@ -18,7 +18,6 @@ export class InvoiceQueryDto {
         default: 1
     })
     @IsOptional()
-    @IsNumber()
     page?: number = 1;
 
     @ApiPropertyOptional({
@@ -27,7 +26,6 @@ export class InvoiceQueryDto {
         default: 10
     })
     @IsOptional()
-    @IsNumber()
     limit?: number = 10;
 
     @ApiPropertyOptional({
@@ -43,7 +41,6 @@ export class InvoiceQueryDto {
         example: 1
     })
     @IsOptional()
-    @IsNumber()
     customerId?: number;
 
     @ApiPropertyOptional({
@@ -51,7 +48,6 @@ export class InvoiceQueryDto {
         example: 1
     })
     @IsOptional()
-    @IsNumber()
     userId?: number;
 
     @ApiPropertyOptional({
