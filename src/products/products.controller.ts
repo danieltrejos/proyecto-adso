@@ -1,14 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';
+
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, Query } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody, ApiQuery } from '@nestjs/swagger';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { GetProductsDto } from './dto/get-products.dto';
 
 @ApiTags('Products')
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private readonly productsService: ProductsService) { }
 
   @Post() // POST /api/v1/products
   @ApiOperation({ summary: 'Crear un nuevo producto' })
@@ -20,10 +21,17 @@ export class ProductsController {
   }
 
   @Get() // GET /api/v1/products
-  @ApiOperation({ summary: 'Obtener todos los productos' })
+  @ApiOperation({ summary: 'Obtener productos con paginación y filtros' })
+  @ApiQuery({ name: 'page', required: false, description: 'Número de página' })
+  @ApiQuery({ name: 'limit', required: false, description: 'Registros por página' })
+  @ApiQuery({ name: 'name', required: false, description: 'Filtrar por nombre' })
+  @ApiQuery({ name: 'type', required: false, description: 'Filtrar por tipo' })
+  @ApiQuery({ name: 'minPrice', required: false, description: 'Precio mínimo' })
+  @ApiQuery({ name: 'maxPrice', required: false, description: 'Precio máximo' })
+  @ApiQuery({ name: 'minStock', required: false, description: 'Stock mínimo' })
   @ApiResponse({ status: 200, description: 'Lista de productos obtenida exitosamente.' })
-  findAll() {
-    return this.productsService.findAll();
+  findAll(@Query() query: GetProductsDto) {
+    return this.productsService.findAllPaginated(query);
   }
 
   @Get(':id') // GET /api/v1/products /:id
