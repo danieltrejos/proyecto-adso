@@ -34,17 +34,53 @@ export class InvoicesService {
       message: 'Factura encontrada',
       invoice: this.mapSaleToInvoice(sale)
     };
-  }
-
-  async findAll(query: InvoiceQueryDto = {}) {
-    const { page = 1, limit = 10 } = query;
+  } async findAll(query: InvoiceQueryDto = {}) {
+    // Convertir strings a números si es necesario
+    const page = Number(query.page) || 1;
+    const limit = Number(query.limit) || 10;
+    const customerId = query.customerId ? Number(query.customerId) : undefined;
+    const userId = query.userId ? Number(query.userId) : undefined;
 
     const sales = await this.salesService.findAll();
 
     // Filtrar ventas que tienen invoiceNumber
-    const invoices = sales
+    let invoices = sales
       .filter(sale => sale.invoiceNumber)
       .map(sale => this.mapSaleToInvoice(sale));
+
+    // Aplicar filtros si existen
+    if (query.invoiceNumber) {
+      invoices = invoices.filter(invoice =>
+        invoice.invoiceNumber.toLowerCase().includes(query.invoiceNumber!.toLowerCase())
+      );
+    }
+
+    if (customerId) {
+      invoices = invoices.filter(invoice =>
+        invoice.customerId === customerId
+      );
+    }
+
+    if (userId) {
+      invoices = invoices.filter(invoice =>
+        invoice.userId === userId
+      );
+    }
+
+    if (query.startDate) {
+      const startDate = new Date(query.startDate);
+      invoices = invoices.filter(invoice =>
+        new Date(invoice.createdAt) >= startDate
+      );
+    }
+
+    if (query.endDate) {
+      const endDate = new Date(query.endDate);
+      endDate.setHours(23, 59, 59, 999); // Incluir todo el día
+      invoices = invoices.filter(invoice =>
+        new Date(invoice.createdAt) <= endDate
+      );
+    }
 
     // Aplicar paginación
     const startIndex = (page - 1) * limit;
@@ -52,7 +88,7 @@ export class InvoicesService {
     const paginatedInvoices = invoices.slice(startIndex, endIndex);
 
     return {
-      data: paginatedInvoices,
+      invoices: paginatedInvoices,
       total: invoices.length,
       page,
       limit,
@@ -106,7 +142,6 @@ export class InvoicesService {
     throw new BadRequestException('Las facturas no pueden ser eliminadas');
   }
 
-
   private mapSaleToInvoice(sale: any) {
     return {
       id: sale.id as number,
@@ -126,7 +161,7 @@ export class InvoicesService {
       user: sale.user,
       customer: sale.customer,
       company: sale.company,
-      items: sale.items
+      saleItems: sale.items || [] // Mapear items a saleItems
     };
   }
 
