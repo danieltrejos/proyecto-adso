@@ -23,7 +23,7 @@ const envFilePath = `.${process.env.NODE_ENV || 'development'}.env`;
     ConfigModule.forRoot({
       envFilePath,
       isGlobal: true
-    }),    ProductosModule,
+    }), ProductosModule,
     ProductsModule,
     UsersModule,
     SalesModule,
@@ -36,4 +36,4 @@ const envFilePath = `.${process.env.NODE_ENV || 'development'}.env`;
   controllers: [AppController],
   providers: [AppService, PrismaService]
 })
-export class AppModule {}
+export class AppModule { }
