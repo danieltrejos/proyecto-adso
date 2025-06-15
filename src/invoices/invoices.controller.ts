@@ -53,7 +53,6 @@ export class InvoicesController {
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.invoicesService.findOne(id);
   }
-
   @Get(':id/download')
   @ApiOperation({ summary: 'Descargar factura en formato PDF' })
   @ApiParam({ name: 'id', description: 'ID de la venta' })
@@ -78,6 +77,10 @@ export class InvoicesController {
         'Content-Type': 'application/pdf',
         'Content-Disposition': `attachment; filename="factura-${invoice.invoiceNumber}.pdf"`,
         'Content-Length': pdfBuffer.length.toString(),
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, Accept',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Expose-Headers': 'Content-Disposition, Content-Type, Content-Length'
       });
 
       res.status(HttpStatus.OK).send(pdfBuffer);
