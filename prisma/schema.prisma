@@ -12,8 +12,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://postgres:oeNpPUaBhqNBOvNqzWFkqJliOoIWwvCH@tramway.proxy.rlwy.net:47797/railway"
-  //url      = env("DATABASE_URL")
+  //url      = "postgresql://postgres:oeNpPUaBhqNBOvNqzWFkqJliOoIWwvCH@tramway.proxy.rlwy.net:47797/railway"
+  url      = env("DATABASE_URL")
 }
 
 model Product {
