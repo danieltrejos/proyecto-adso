@@ -1,0 +1,9 @@
+En este commit ya esta desplegado el backend:
+
+https://proyecto-adso-production.up.railway.app/
+
+https://proyecto-adso-production.up.railway.app/api/
+
+https://proyecto-adso-production.up.railway.app/api/v1/product
+
+https://proyecto-adso-production.up.railway.app/api/v1/users
