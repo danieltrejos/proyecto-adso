@@ -5,7 +5,7 @@ export const CORS: CorsOptions = {
   // especialmente en producción. 'true' permite CUALQUIER origen.
   origin: [
     'http://localhost:3000', // El frontend Next.js en desarrollo
-    'https://proyecto-adso-frontend.up.railway.app'// Añade aquí la URL del frontend en producción cuando se despliegue
+    'https://proyect-front-final-production.up.railway.app/' // Añade aquí la URL del frontend en producción cuando se despliegue
     // 'https://tu-aplicacion-frontend.com'
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
