@@ -9,7 +9,7 @@
     "prepare": "prisma generate",
     "start": "prisma generate && nest start",
     "start:dev": "nest start --watch",
-    "start:prod": "echo 'DATABASE_URL=' && echo $DATABASE_URL && prisma migrate deploy && node dist/main",
+    "start:prod": "echo '-----> Ejecutando script start:prod' && prisma migrate deploy && echo '-----> Migracion completada, iniciando app' && node dist/main",
     "postinstall": "prisma generate",
     "build": "prisma generate && nest build",
     "start:debug": "nest start --debug --watch",
