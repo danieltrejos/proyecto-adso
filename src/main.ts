@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
@@ -38,7 +39,11 @@ async function bootstrap() {
     })
   );
 
-  await app.listen(configService.get('PORT') || 3000);
-  console.log('PORT desde ConfigService:', configService.get('PORT'));
+  // Priorizar PORT del entorno (Render lo provee automáticamente)
+  // Luego ConfigService, y finalmente 8000 por defecto
+  const port = process.env.PORT || configService.get('PORT') || 8001;
+  await app.listen(port);
+  console.log(`Application is running on port: ${port}`);
+  console.log('NODE_ENV:', process.env.NODE_ENV);
 }
 bootstrap();
