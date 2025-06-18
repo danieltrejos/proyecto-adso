@@ -7,10 +7,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "prepare": "prisma generate",
-    "start": "prisma generate && nest start",
-    "start:prod": "node dist/main",
-    "migrate:deploy": "prisma migrate deploy",
+    "start": "nest start",
     "start:dev": "nest start --watch",
+    "start:prod": "echo '-----> Ejecutando script start:prod' && prisma migrate deploy && echo '-----> Migracion completada, iniciando app' && node dist/main",
     "postinstall": "prisma generate",
     "build": "prisma generate && nest build",
     "start:debug": "nest start --debug --watch",

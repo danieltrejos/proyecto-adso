@@ -1,47 +1,36 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client-js"
-  binaryTargets   = ["native", "debian-openssl-3.0.x"]
-  //output   = "../generated/prisma"
+  provider      = "prisma-client-js"
+  output        = "./node_modules/@prisma/client"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
   provider = "postgresql"
-  //url      = "postgresql://postgres:oeNpPUaBhqNBOvNqzWFkqJliOoIWwvCH@tramway.proxy.rlwy.net:47797/railway"
   url      = env("DATABASE_URL")
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  name        String   @unique
+  id          Int        @id @default(autoincrement())
+  name        String     @unique
   description String?
-  type        String?
   price       Float
   image       String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
   stock       Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  
-  // Relaciones
-  saleItems SaleItem[]
+  type        String?
+  saleItems   SaleItem[]
 }
 
 model User {
   id        Int      @id @default(autoincrement())
   name      String
   email     String   @unique
-  role      String   // "admin", "bartender", etc.
+  role      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
-  // Relaciones
   sales     Sale[]
-  
+
   @@map("users")
 }
 
@@ -50,110 +39,93 @@ model Customer {
   name      String
   email     String?
   phone     String?
-  address   String?  // NUEVO - Para mostrar en factura
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
-  // Relaciones
+  address   String?
   sales     Sale[]
-  
+
   @@map("customers")
 }
 
 model Sale {
-  id            Int      @id @default(autoincrement())
+  id            Int        @id @default(autoincrement())
   total         Float
-  subtotal      Float    // AHORA REQUERIDO
-  taxAmount     Float    // AHORA REQUERIDO
-  taxRate       Float    // AHORA REQUERIDO
   paymentAmount Float
   change        Float
-  paymentMethod String   @default("Cash")
-  invoiceNumber String?  @unique
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  
-  // Foreign Keys
-  userId     Int
-  customerId Int?
-  companyId  String   // AHORA REQUERIDO
-  
-  // Relaciones
-  user       User        @relation(fields: [userId], references: [id])
-  customer   Customer?   @relation(fields: [customerId], references: [id])
-  company    Company     @relation(fields: [companyId], references: [id])
-  items      SaleItem[]
-  
+  paymentMethod String     @default("Cash")
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  userId        Int
+  customerId    Int?
+  companyId     String
+  invoiceNumber String?    @unique
+  subtotal      Float
+  taxAmount     Float
+  taxRate       Float
+  items         SaleItem[]
+  company       Company    @relation(fields: [companyId], references: [id])
+  customer      Customer?  @relation(fields: [customerId], references: [id])
+  user          User       @relation(fields: [userId], references: [id])
+
   @@map("sales")
 }
 
 model SaleItem {
-  id       Int   @id @default(autoincrement())
-  quantity Int
-  price    Float // Precio al momento de la venta
-  
-  // Foreign Keys
+  id        Int     @id @default(autoincrement())
+  quantity  Int
+  price     Float
   saleId    Int
   productId Int
-  
-  // Relaciones
-  sale    Sale    @relation(fields: [saleId], references: [id], onDelete: Cascade)
-  product Product @relation(fields: [productId], references: [id])
-  
+  product   Product @relation(fields: [productId], references: [id])
+  sale      Sale    @relation(fields: [saleId], references: [id], onDelete: Cascade)
+
   @@map("sale_items")
 }
 
 model Company {
-  id              String   @id @default(cuid())
-  name            String
-  registrationNumber String @map("registration_number")
-  email           String   @unique
-  phone           String?
-  currency        String   @default("USD")
-  timezone        String   @default("America/Bogota")
-  logo            String?
-  
-  // Address fields
-  street          String
-  city            String
-  state           String   @map("region_province")
-  postalCode      String   @map("postal_code")
-  country         String
-  
-  createdAt       DateTime @default(now()) @map("created_at")
-  updatedAt       DateTime @updatedAt @map("updated_at")
-  
-  // Relaciones
-  sales           Sale[]   // NUEVO - Relación con ventas
-  
+  id                 String   @id @default(cuid())
+  name               String
+  registrationNumber String   @map("registration_number")
+  email              String   @unique
+  phone              String?
+  currency           String   @default("USD")
+  timezone           String   @default("America/Bogota")
+  logo               String?
+  street             String
+  city               String
+  state              String   @map("region_province")
+  postalCode         String   @map("postal_code")
+  country            String
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+  sales              Sale[]
+
   @@map("companies")
 }
 
-// NUEVA ENTIDAD - Gestión de Monedas
 model Currency {
   id                Int      @id @default(autoincrement())
-  code              String   @unique // USD, COP, EUR, etc.
-  name              String   // US Dollar, Peso Colombiano, etc.
-  symbol            String   // $, €, etc.
-  precision         Int      @default(2) // Decimales
+  code              String   @unique
+  name              String
+  symbol            String
+  precision         Int      @default(2)
   thousandSeparator String   @default(",")
   decimalSeparator  String   @default(".")
   isActive          Boolean  @default(true)
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
-  
+
   @@map("currencies")
 }
 
-// NUEVA ENTIDAD - Gestión de Impuestos
 model Tax {
-  id          Int      @id @default(autoincrement())
-  name        String   // IVA, VAT, Sales Tax, etc.
-  rate        Float    // 10.0, 19.0, etc. (porcentaje)
-  isActive    Boolean  @default(true)
-  isDefault   Boolean  @default(false) // Solo uno puede ser default
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  
+  id        Int      @id @default(autoincrement())
+  name      String
+  rate      Float
+  isActive  Boolean  @default(true)
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@map("taxes")
 }
