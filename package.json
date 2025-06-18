@@ -8,7 +8,7 @@
   "scripts": {
     "start": "nest start",
     "start:dev": "nest start --watch",
-    "start:prod": "prisma migrate deploy && node dist/main",
+    "start:prod": "echo 'DATABASE_URL=' && echo $DATABASE_URL && prisma migrate deploy && node dist/main",
     "postinstall": "prisma generate",
     "build": "prisma generate && nest build",
     "start:debug": "nest start --debug --watch",
