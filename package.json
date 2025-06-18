@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "prepare": "prisma generate",
     "start": "prisma generate && nest start",
     "start:dev": "nest start --watch",
     "start:prod": "echo 'DATABASE_URL=' && echo $DATABASE_URL && prisma migrate deploy && node dist/main",
