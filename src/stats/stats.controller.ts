@@ -1,34 +1,23 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { StatsService } from './stats.service';
-import { CreateStatDto } from './dto/create-stat.dto';
-import { UpdateStatDto } from './dto/update-stat.dto';
+import { DashboardStatsDto, SalesByMonthDto, RecentSaleDto } from './dto/dashboard-stats.dto';
 
 @Controller('stats')
 export class StatsController {
   constructor(private readonly statsService: StatsService) {}
 
-  @Post()
-  create(@Body() createStatDto: CreateStatDto) {
-    return this.statsService.create(createStatDto);
+  @Get('dashboard')
+  getDashboardStats(): Promise<DashboardStatsDto> {
+    return this.statsService.getDashboardStats();
   }
 
-  @Get()
-  findAll() {
-    return this.statsService.findAll();
+  @Get('sales-by-month')
+  getSalesByMonth(): Promise<SalesByMonthDto[]> {
+    return this.statsService.getSalesByMonth();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.statsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateStatDto: UpdateStatDto) {
-    return this.statsService.update(+id, updateStatDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.statsService.remove(+id);
+  @Get('recent-sales')
+  getRecentSales(): Promise<RecentSaleDto[]> {
+    return this.statsService.getRecentSales();
   }
 }
