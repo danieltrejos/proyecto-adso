@@ -14,11 +14,11 @@ export class StatsService {
     // Total products count
     const totalProducts = await this.prismaService.product.count();
 
-    // Low stock count (products with stock <= 10)
+    // Low stock count (products with stock < 100)
     const lowStockCount = await this.prismaService.product.count({
       where: {
         stock: {
-          lte: 10
+          lt: 100
         }
       }
     });
@@ -68,10 +68,9 @@ export class StatsService {
       revenue: item.revenue
     }));
   }
-
   async getRecentSales(): Promise<RecentSaleDto[]> {
     const recentSales = await this.prismaService.sale.findMany({
-      take: 10,
+      take: 5,
       orderBy: {
         createdAt: 'desc'
       },
