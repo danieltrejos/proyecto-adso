@@ -14,6 +14,7 @@ import { CompaniesModule } from './companies/companies.module';
 import { TaxesModule } from './taxes/taxes.module';
 import { CurrenciesModule } from './currencies/currencies.module';
 import { InvoicesModule } from './invoices/invoices.module';
+import { StatsModule } from './stats/stats.module';
 
 // Asegurar que el process.env.NODE_ENV se cargue aunque sea en desarrollo
 const envFilePath = `.${process.env.NODE_ENV || 'development'}.env`;
@@ -31,7 +32,8 @@ const envFilePath = `.${process.env.NODE_ENV || 'development'}.env`;
     CompaniesModule,
     TaxesModule,
     CurrenciesModule,
-    InvoicesModule
+    InvoicesModule,
+    StatsModule
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService]
