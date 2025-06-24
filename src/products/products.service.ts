@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -11,7 +10,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class ProductsService {
   // Inyección de dependencias
-  constructor(private readonly prismaService: PrismaService) { }
+  constructor(private readonly prismaService: PrismaService) {}
 
   // POST /api/v1/products
   create(createProductDto: CreateProductDto) {
@@ -163,6 +162,33 @@ export class ProductsService {
       data: {
         stock: {
           increment: amount // Aumenta el stock de forma segura
+        }
+      }
+    });
+  }
+
+  // PATCH /api/v1/products/:id/outbound
+  async outbound(id: number, amount: number) {
+    if (amount <= 0) {
+      throw new BadRequestException('La cantidad de salida debe ser mayor a cero.');
+    }
+
+    const product = await this.prismaService.product.findUnique({ where: { id } });
+    if (!product) {
+      throw new NotFoundException('Producto no encontrado');
+    }
+
+    if (product.stock < amount) {
+      throw new BadRequestException(
+        `Stock insuficiente. Stock actual: ${product.stock}, cantidad solicitada: ${amount}`
+      );
+    }
+
+    return this.prismaService.product.update({
+      where: { id },
+      data: {
+        stock: {
+          decrement: amount // Reduce el stock de forma segura
         }
       }
     });

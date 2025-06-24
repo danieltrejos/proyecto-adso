@@ -1,15 +1,25 @@
-
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+  Query
+} from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody, ApiQuery } from '@nestjs/swagger';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { GetProductsDto } from './dto/get-products.dto';
+import { OutboundDto } from './dto/outbound.dto';
 
 @ApiTags('Products')
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) { }
+  constructor(private readonly productsService: ProductsService) {}
 
   @Post() // POST /api/v1/products
   @ApiOperation({ summary: 'Crear un nuevo producto' })
@@ -78,5 +88,17 @@ export class ProductsController {
   @ApiResponse({ status: 404, description: 'Producto no encontrado.' })
   async restockProduct(@Param('id', ParseIntPipe) id: number, @Body('amount') amount: number) {
     return this.productsService.restock(id, amount);
+  }
+
+  // Outbound product (reducir stock)
+  @Patch(':id/outbound')
+  @ApiOperation({ summary: 'Registrar salida de stock de un producto' })
+  @ApiParam({ name: 'id', description: 'ID del producto', type: 'number' })
+  @ApiBody({ type: OutboundDto })
+  @ApiResponse({ status: 200, description: 'Stock reducido exitosamente.' })
+  @ApiResponse({ status: 400, description: 'Stock insuficiente o cantidad inválida.' })
+  @ApiResponse({ status: 404, description: 'Producto no encontrado.' })
+  async outboundProduct(@Param('id', ParseIntPipe) id: number, @Body() outboundDto: OutboundDto) {
+    return this.productsService.outbound(id, outboundDto.amount);
   }
 }
