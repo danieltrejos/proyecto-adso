@@ -17,7 +17,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Injectable()
 export class InvoicesService {
-  constructor(private readonly salesService: SalesService) { }
+  constructor(private readonly salesService: SalesService) {}
 
   async create(createInvoiceDto: CreateInvoiceDto) {
     if (!createInvoiceDto.saleId) {
@@ -34,7 +34,8 @@ export class InvoicesService {
       message: 'Factura encontrada',
       invoice: this.mapSaleToInvoice(sale)
     };
-  } async findAll(query: InvoiceQueryDto = {}) {
+  }
+  async findAll(query: InvoiceQueryDto = {}) {
     // Convertir strings a números si es necesario
     const page = Number(query.page) || 1;
     const limit = Number(query.limit) || 10;
@@ -45,41 +46,33 @@ export class InvoicesService {
 
     // Filtrar ventas que tienen invoiceNumber
     let invoices = sales
-      .filter(sale => sale.invoiceNumber)
-      .map(sale => this.mapSaleToInvoice(sale));
+      .filter((sale) => sale.invoiceNumber)
+      .map((sale) => this.mapSaleToInvoice(sale));
 
     // Aplicar filtros si existen
     if (query.invoiceNumber) {
-      invoices = invoices.filter(invoice =>
+      invoices = invoices.filter((invoice) =>
         invoice.invoiceNumber.toLowerCase().includes(query.invoiceNumber!.toLowerCase())
       );
     }
 
     if (customerId) {
-      invoices = invoices.filter(invoice =>
-        invoice.customerId === customerId
-      );
+      invoices = invoices.filter((invoice) => invoice.customerId === customerId);
     }
 
     if (userId) {
-      invoices = invoices.filter(invoice =>
-        invoice.userId === userId
-      );
+      invoices = invoices.filter((invoice) => invoice.userId === userId);
     }
 
     if (query.startDate) {
       const startDate = new Date(query.startDate);
-      invoices = invoices.filter(invoice =>
-        new Date(invoice.createdAt) >= startDate
-      );
+      invoices = invoices.filter((invoice) => new Date(invoice.createdAt) >= startDate);
     }
 
     if (query.endDate) {
       const endDate = new Date(query.endDate);
       endDate.setHours(23, 59, 59, 999); // Incluir todo el día
-      invoices = invoices.filter(invoice =>
-        new Date(invoice.createdAt) <= endDate
-      );
+      invoices = invoices.filter((invoice) => new Date(invoice.createdAt) <= endDate);
     }
 
     // Aplicar paginación
@@ -119,9 +112,7 @@ export class InvoicesService {
 
     return new Promise((resolve, reject) => {
       try {
-
         const pdfDocGenerator = pdfMake.createPdf(pdfDoc);
-
 
         pdfDocGenerator.getBuffer((buffer: Buffer) => {
           resolve(buffer);
@@ -164,7 +155,6 @@ export class InvoicesService {
       saleItems: sale.items || [] // Mapear items a saleItems
     };
   }
-
 
   private generatePDFDefinition(sale: any): TDocumentDefinitions {
     const company = sale.company;
@@ -227,7 +217,7 @@ export class InvoicesService {
                 { text: 'CANT.', style: 'tableHeader' },
                 { text: 'DESCRIPCIÓN', style: 'tableHeader' },
                 { text: 'PRECIO UNIT.', style: 'tableHeader' },
-                { text: 'PRECIO TOTAL', style: 'tableHeader' }
+                { text: 'SUBTOTAL', style: 'tableHeader' }
               ],
 
               ...items.map((item: any) => [
